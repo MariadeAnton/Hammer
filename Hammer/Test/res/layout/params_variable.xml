@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:background="@drawable/m_green"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#91D100"
+        android:gravity="center"
+        android:text="Variable Parameters"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <include
+        android:id="@+id/varDisplay"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:layout_weight="6"
+        layout="@layout/variable"
+        android:background="@drawable/m_green" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/m_teal"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/namePieceS"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Variable name"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <EditText
+                android:id="@+id/vName"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/m_blue"
+                android:ems="10"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/m_teal"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Value"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <EditText
+                android:id="@+id/vValue"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/m_blue"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="numberDecimal" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button3"
+        style="@style/btnStyleBlackpearl"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:onClick="loadVariable"
+        android:text="Load Variable" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/button1"
+            style="@style/btnStyleBlackpearl"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:onClick="onCancelVariable"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/btnStyleBlackpearl"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:onClick="onSetVariableParams"
+            android:text="Accept" />
+
+    </LinearLayout>
+
+</LinearLayout>

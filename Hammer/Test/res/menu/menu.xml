@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+      <item
+        android:title="Save"
+        android:icon="@drawable/save"
+        android:id="@+id/save_program"
+        android:showAsAction="ifRoom"
+        />
+    
+      <item
+        android:title="Connect CAD"
+        android:id="@+id/connect_cad"
+        android:icon="@drawable/connection"
+        android:showAsAction="ifRoom"
+       
+       
+        />
+      
+       <item
+        android:title="Online"
+        android:id="@+id/online"
+        android:icon="@drawable/offline"
+        android:showAsAction="ifRoom"
+        
+        />
+      
+      
+     
+
+</menu>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:background="@drawable/m_orange"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/text5643"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FF981D"
+        android:gravity="center"
+        android:text="Comparer Parameters"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:layout_weight="6" >
+
+        <include
+            android:id="@+id/v1"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"
+            layout="@layout/variable" />
+
+        <TextView
+            android:id="@+id/oper"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="40sp" />
+
+        <include
+            android:id="@+id/v2"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"
+            layout="@layout/variable" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:layout_weight="6" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/m_teal"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Variable A"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <ListView
+                android:id="@+id/listVar1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:background="@drawable/m_blue" >
+
+            </ListView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/m_teal"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Variable B"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                 />
+
+            <ListView
+                android:id="@+id/listVar2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:background="@drawable/m_blue" >
+
+            </ListView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/button1"
+            style="@style/btnStyleBlackpearl"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:onClick="onCancelComparer"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/btnStyleBlackpearl"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:onClick="onSetComparerParams"
+            android:text="Accept" />
+
+    </LinearLayout>
+
+</LinearLayout>
