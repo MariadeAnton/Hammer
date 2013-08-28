@@ -127,25 +127,7 @@ public class ButtonMovement extends ButtonLinkAddable{
 	protected  void drawBorders(Canvas c)
 	{
 	
-		paint.setColor(Color.BLACK);
-		paint.setStrokeWidth(4.0f);
-		paint.setShader(null);
-		paint.setStyle(Style.STROKE);
-		
-		if(linkable)
-		{
-			paint.setStrokeWidth(8.0f);
-			paint.setColor(Color.GREEN);
-			
-		}
-		if(addable)
-		{
-			paint.setStrokeWidth(8.0f);
-			paint.setColor(Color.YELLOW);
-		
-		}
-		
-		c.drawPath(path, paint);
+		super.drawBorders(c);
 		paint.setColor(Color.BLACK);
 		paint.setStyle(Style.FILL_AND_STROKE);
 		c.drawCircle(posX+getWidth()/2, posY,getHeight()/2-getHeight()/6, paint);
@@ -181,6 +163,7 @@ public void showParametersLayout() {
 		touchLay.setParameter(parameter);
 
 		((ActivityScratch)getActivity()).showButtonParameters(touchLay);
+		modificate=true;
 	}
 
 

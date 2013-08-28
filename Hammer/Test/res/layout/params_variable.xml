@@ -10,7 +10,7 @@
         android:id="@+id/textView3"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:background="#91D100"
         android:gravity="center"
         android:text="Variable Parameters"
@@ -21,7 +21,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_margin="20dp"
-        android:layout_weight="6"
+        android:layout_weight="5.5"
         layout="@layout/variable"
         android:background="@drawable/m_green" />
 
@@ -94,20 +94,22 @@
         style="@style/btnStyleBlackpearl"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:layout_weight="1.5"
         android:onClick="loadVariable"
         android:text="Load Variable" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" >
+        android:layout_weight="1.5" >
 
         <Button
             android:id="@+id/button1"
             style="@style/btnStyleBlackpearl"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
+            android:layout_margin="10dp"
             android:layout_weight="1"
             android:onClick="onCancelVariable"
             android:text="Cancel" />
@@ -117,6 +119,7 @@
             style="@style/btnStyleBlackpearl"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
+            android:layout_margin="10dp"
             android:layout_weight="1"
             android:onClick="onSetVariableParams"
             android:text="Accept" />

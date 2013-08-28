@@ -90,6 +90,11 @@ public class ButtonComparer extends PositionableObject {
 			paint.setColor(Color.LTGRAY);
 			
 		}
+		else if(modificate)
+		{
+			paint.setStrokeWidth(8.0f);
+			paint.setColor(Color.parseColor("#DF3A01"));
+		}
 	
 		c.drawPath(path, paint);
 	}
@@ -255,6 +260,7 @@ public class ButtonComparer extends PositionableObject {
 		comParam.setIntercept(false);
 		((TextView)comParam.findViewById(R.id.oper)).setText(name);
 		((ActivityScratch)getActivity()).showButtonParameters(comParam);
+		modificate=true;
        
 	}
 	

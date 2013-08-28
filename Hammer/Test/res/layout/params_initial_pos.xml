@@ -14,7 +14,7 @@
         android:id="@+id/text01223"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:background="#AA40FF"
         android:gravity="center"
         android:text="Initial Position"
@@ -58,12 +58,12 @@
                     android:orientation="horizontal" >
 
                     <ImageView
-                        android:id="@+id/imageView1"
+                        android:id="@+id/dialogIcon"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_margin="10dp"
                         android:layout_weight="1"
-                        android:src="@drawable/speed" />
+                        android:src="@drawable/spe" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -129,7 +129,7 @@
                         android:layout_height="fill_parent"
                         android:layout_margin="10dp"
                         android:layout_weight="1"
-                        android:src="@drawable/initial" />
+                        android:src="@drawable/pos" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -220,13 +220,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" >
+        android:layout_weight="1.5" >
 
         <Button
             android:id="@+id/button1"
             style="@style/btnStyleBlackpearl"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
+            android:layout_margin="10dp"
             android:layout_weight="1"
             android:onClick="onCancelPos"
             android:text="Cancel" />
@@ -236,6 +237,7 @@
             style="@style/btnStyleBlackpearl"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
+            android:layout_margin="10dp"
             android:layout_weight="1"
             android:onClick="onSetInitParameters"
             android:text="Accept" />

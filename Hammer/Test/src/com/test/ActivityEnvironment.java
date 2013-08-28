@@ -8,13 +8,15 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
 import android.app.FragmentManager;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -87,12 +89,11 @@ public class ActivityEnvironment extends Activity {
 		glSurface.setListPath(listPath);
 	
 	
-	
 	File yourDir =new File( Environment.getExternalStorageDirectory()+MainActivity.applicationFolder+environmentFolder);
 	
 	for (File f : yourDir.listFiles())
 		if (f.isFile())
-			xList.add(new ListItem(getResources().getDrawable(R.drawable.hammer),f.getName(),yourDir.getAbsolutePath()));
+			xList.add(new ListItem(getResources().getDrawable(R.drawable.xmlfile),f.getName(),yourDir.getAbsolutePath()));
 
 	adapterXML.notifyDataSetChanged();
 

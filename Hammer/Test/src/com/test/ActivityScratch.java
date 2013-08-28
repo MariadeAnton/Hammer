@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -48,11 +48,10 @@ import com.test.AuxBasicVariables.TriplePoint;
 
 
 
+
 public class ActivityScratch extends Activity {
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
+	
 	
 	LayoutInflater inflater;
 	private SlidingMenu menu; 
@@ -95,41 +94,19 @@ public class ActivityScratch extends Activity {
 	
 		activity=this;
 		dispatcher=(LinearLayout)findViewById(R.id.dispatcherLay);
-		handler=new Handler()
-		{
-
-			@Override
-			public void handleMessage(Message msg) {
-				
-				Button exe=(Button)findViewById(R.id.execute);
-				switch(msg.what)
-				{
-				case 0:
-					((AuxAdapterVariables)varGrid.getAdapter()).notifyDataSetChanged();
-					break;
-				case 1:
-					exe.setEnabled(false);
-					break;
-				case 2:
-					exe.setEnabled(true);
-					break;
-				}
-				
-			}
-			
-		};
+		handler=new MyHandler();
+		
 		client=new Client(this,"127.0.0.1",12000);
 			 
 		
 		
 		
-
+		surface=(MySchemaSurface)findViewById(R.id.schemaView);
 		menuView = (FrameLayout)findViewById(R.id.scratching);
 		slidMenu=(FrameLayout)findViewById(R.id.slidmenu);
 		slidMenu.setVisibility(View.VISIBLE);
 		glSurface3D=(MyRajawaliFragment) getFragmentManager().findFragmentById(R.id.slideFragment);
 		menuView.removeView(slidMenu);
-		surface= new MySchemaSurface(this);
 		varGrid=(MyVariableGrid)findViewById(R.id.myVarSurface);
 		varGrid.setAdapter(new AuxAdapterVariables(this,varGrid.getVariables()));
 		varGrid.setOnItemLongClickListener(varGrid);
@@ -179,7 +156,7 @@ public class ActivityScratch extends Activity {
        
        
         
-		surface=(MySchemaSurface)findViewById(R.id.schemaView);
+		
 		listPath=(ListView)findViewById(R.id.pathSelected);		
 		listPath.setAdapter(new AuxAdapterPoints(this,new ArrayList<TriplePoint>()));
 		glSurface3D.setListPath(listPath);
@@ -332,13 +309,9 @@ public class ActivityScratch extends Activity {
 		deburring.setOnTouchListener(new MyTouchListener());
 		
 		conf.setOnTouchListener(new MyTouchListener());
-		
-		
-		
 		surface.setOnDragListener(new MyDragListener());
 	
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
+		
 
 		
 	
@@ -348,33 +321,32 @@ public class ActivityScratch extends Activity {
 	@Override
 	public void onBackPressed() {
 		final EditText saveName=new EditText(this);
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-		// 2. Chain together various setter methods to set the dialog characteristics
-		builder
-		.setIcon(R.drawable.save)
-		.setMessage("Do you want to save this program?")
-       .setTitle("SAVE PROGRAM")
-       .setView(saveName)
-       .setPositiveButton("Save", new DialogInterface.OnClickListener() {
-           public void onClick(DialogInterface dialog, int id) {
-        	   saveProgram(saveName.getText().toString());
-        	   finish();
-             
-           }
-       })
-       .setNegativeButton("Don't save", new DialogInterface.OnClickListener() {
-           public void onClick(DialogInterface dialog, int id) {
-        	   finish();
-               // User cancelled the dialog
-           }
-       });
-
-
-		// 3. Get the AlertDialog from create()
-	
-		AlertDialog dialog = builder.create();
-		dialog.show();
+		
+		MyCustomDialog.Builder customBuilder=new MyCustomDialog.Builder(this);
+		Dialog  dialog=null;
+		customBuilder.setTitle("SAVE PROGRAM")
+                .setMessage("Do you want to save the program??")
+                .setContentView(saveName)
+                .setIcon(R.drawable.savedata)
+                .setNegativeButton("Cancel", 
+                        new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    	
+                    	 dialog.dismiss();
+                    	 finish();
+                    }
+                })
+                .setPositiveButton("Confirm", 
+                        new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    	 saveProgram(saveName.getText().toString());
+                    	 dialog.dismiss();
+                    	 finish();
+                        
+                    }
+                });
+          dialog = customBuilder.create();
+          dialog.show();
 		
 	}
 	
@@ -387,9 +359,9 @@ public class ActivityScratch extends Activity {
 		if(client==null)return super.onCreateOptionsMenu(menu);
 		
 		if(client.isConnected())
-			menu.getItem(2).setIcon(R.drawable.online);
+			menu.getItem(2).setIcon(R.drawable.line_on);
 		else
-			menu.getItem(2).setIcon(R.drawable.offline);
+			menu.getItem(2).setIcon(R.drawable.line_off);
 		
 		
 		return super.onCreateOptionsMenu(menu);
@@ -415,99 +387,93 @@ public class ActivityScratch extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
 	
-		
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		AlertDialog dialog = null;
+		MyCustomDialog.Builder customBuilder=new MyCustomDialog.Builder(this);
+		Dialog  dialog=null;
 		switch(item.getItemId()){
 		
 		case R.id.save_program:
 			
 			final EditText saveName=new EditText(this);
-			// 2. Chain together various setter methods to set the dialog characteristics
-			builder.setMessage("Do you want to save this program?")
-			.setIcon(R.drawable.save)
-	       .setTitle("SAVE PROGRAM")
-	       .setView(saveName)
-	       .setPositiveButton("Save", new DialogInterface.OnClickListener() {
-	           public void onClick(DialogInterface dialog, int id) {
-	        	   saveProgram(saveName.getText().toString());
-	             
-	           }
-	       })
-	       .setNegativeButton("Don't save", new DialogInterface.OnClickListener() {
-	           public void onClick(DialogInterface dialog, int id) {
-	               // User cancelled the dialog
-	           }
-	       });
-
-
-			// 3. Get the AlertDialog from create()
-		
-			dialog = builder.create();
-			dialog.show();
-			break;
+			
+	          
+			customBuilder.setTitle("SAVE PROGRAM")
+	                .setMessage("Do you want to save the program??")
+	                .setContentView(saveName)
+	                .setIcon(R.drawable.savedata)
+	                .setNegativeButton("Cancel", 
+	                        new DialogInterface.OnClickListener() {
+	                    public void onClick(DialogInterface dialog, int which) {
+	                    	dialog.dismiss();
+	                    }
+	                })
+	                .setPositiveButton("Confirm", 
+	                        new DialogInterface.OnClickListener() {
+	                    public void onClick(DialogInterface dialog, int which) {
+	                    	 saveProgram(saveName.getText().toString());
+	                    	 dialog.dismiss();
+	                        
+	                    }
+	                });
+	          dialog = customBuilder.create();
+	          dialog.show();
+			
+	          break;
 			
 		case R.id.connect_cad:
-			
-		
-		
 			
 			if(!client.isConnected())
 			{
 			
-				builder.setMessage("Do you want connect the program to IP "+GeneralParameters.ip+
-					" in port "+GeneralParameters.port+" ?")
-					.setIcon(R.drawable.connection)
-					.setTitle("CONNECT TO EASYROB")
-					.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
-	          
-
-						public void onClick(DialogInterface dialog, int id) {
-							client=new Client(activity,GeneralParameters.getIp(),GeneralParameters.getPort());
-							client.setHandler(handler);
-							client.start();
-	             
-						}
-					})
-					.setNegativeButton("Don't connect", new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int id) {
-							client=null;
-						}
-					});
-
-
-			
-		
-				dialog = builder.create();
-				dialog.show();
-				break;
+				
+		          
+				customBuilder.setTitle("CONNECT TO EASYROB")
+		                .setMessage("Do you want connect the program to IP "+GeneralParameters.ip+
+		    					" in port "+GeneralParameters.port+" ?")
+		                .setIcon(R.drawable.connect)
+		                .setNegativeButton("Cancel", 
+		                        new DialogInterface.OnClickListener() {
+		                    public void onClick(DialogInterface dialog, int which) {
+		                    	dialog.dismiss();
+		                    }
+		                })
+		                .setPositiveButton("Confirm", 
+		                        new DialogInterface.OnClickListener() {
+		                    public void onClick(DialogInterface dialog, int which) {
+		                    	 client=new Client(activity,GeneralParameters.getIp(),GeneralParameters.getPort());
+								client.setHandler(handler);
+								client.start();
+								 dialog.dismiss();
+		                        
+		                    }
+		                });
+		          dialog = customBuilder.create();
+		          dialog.show();
 			}
 			
 			else
 			{
-				builder.setMessage("Do you want disconnect the program?")
-				.setIcon(R.drawable.connection)
+				customBuilder.setMessage("Do you want disconnect the program?")
+				.setIcon(R.drawable.connect)
 		       .setTitle("CONNECT TO EASYROB")
-		       .setPositiveButton("Disconnect", new DialogInterface.OnClickListener() {
+		       .setNegativeButton("Disconnect", new DialogInterface.OnClickListener() {
 		          
 
 				public void onClick(DialogInterface dialog, int id) {
 		        	   client.disconnect();
+		        	   dialog.dismiss();
 		        	 
 		        	 
 		             
 		           }
 		       })
-		       .setNegativeButton("Don't disconnect", new DialogInterface.OnClickListener() {
+		       .setPositiveButton("Don't disconnect", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
-		              
+		        	   dialog.dismiss();
 		           }
 		       });
 
 
-				// 3. Get the AlertDialog from create()
-			
-				dialog = builder.create();
+				dialog = customBuilder.create();
 				dialog.show();
 				break;
 			}
@@ -527,7 +493,7 @@ public class ActivityScratch extends Activity {
 
 	{
 		
-		ArrayList<PositionableObject > list=surface.getList();
+		ArrayList<PositionableObject > list=surface.getDrawList();
 		
 		
 		for(PositionableObject lso:list)
@@ -562,10 +528,7 @@ public class ActivityScratch extends Activity {
 	public void onCancelParameter(View view)
 	{
 		EditText par=(EditText)findViewById(R.id.paramValue);
-		MyTouchableLayout parameter=(MyTouchableLayout)findViewById(R.id.valueLay);
-		
 		showButtonParameters(dispatcher);
-		
 		par.getText().clear();
 		
 	}
@@ -600,7 +563,7 @@ public class ActivityScratch extends Activity {
 	public void onCancelPos(View view)
 	{
 		EditText par=(EditText)findViewById(R.id.speedValue);
-		MyTouchableLayout parameters=(MyTouchableLayout)findViewById(R.id.initPosParam);
+	
 	
 		EditText x,y,z;
  		x=(EditText)findViewById(R.id.xipos);
@@ -734,8 +697,6 @@ public class ActivityScratch extends Activity {
 	
 	public void onCancelComparer(View view)
 	{
-	
-		MyTouchableLayout compLay=(MyTouchableLayout)findViewById(R.id.compLay);
 		showButtonParameters(dispatcher);
 	}
 
@@ -781,8 +742,6 @@ public class ActivityScratch extends Activity {
 	
 	public void onCancelComparerConst(View view)
 	{
-	
-		MyTouchableLayout compLay=(MyTouchableLayout)findViewById(R.id.compLayConst);
 		showButtonParameters(dispatcher);
 	}
 	
@@ -820,7 +779,6 @@ public class ActivityScratch extends Activity {
 	public void onCancelSelVar(View view)
 	{
 		
-		MyTouchableLayout selVarLay=(MyTouchableLayout)findViewById(R.id.selVarLay);
 		showButtonParameters(dispatcher);
 	}
 	
@@ -1039,9 +997,33 @@ public class ActivityScratch extends Activity {
 		
 		dispatcher.setVisibility(View.INVISIBLE);
 		show.setVisibility(View.VISIBLE);
+		for(PositionableObject po:surface.getTotalObjectDrawnList())po.setModificate(false);
 	}
 	
 
+	class MyHandler extends Handler
+	{
+	
+		
+
+			@Override
+			public void handleMessage(Message msg) {
+				
+				Button exe=(Button)findViewById(R.id.execute);
+				switch(msg.what)
+				{
+				case 0:
+					((AuxAdapterVariables)varGrid.getAdapter()).notifyDataSetChanged();
+					break;
+				case 1:
+					exe.setEnabled(false);
+					break;
+				case 2:
+					exe.setEnabled(true);
+					break;
+				}
+			}
+	}
 
 
 	

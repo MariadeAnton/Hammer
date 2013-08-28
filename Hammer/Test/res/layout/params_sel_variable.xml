@@ -10,7 +10,7 @@
         android:id="@+id/er"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:background="#91D100"
         android:gravity="center"
         android:text="Select Variable"
@@ -59,13 +59,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" >
+        android:layout_weight="1.5" >
 
         <Button
             android:id="@+id/button1"
             style="@style/btnStyleBlackpearl"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
+            android:layout_margin="10dp"
             android:layout_weight="1"
             android:onClick="onCancelSelVar"
             android:text="Cancel" />
@@ -75,6 +76,7 @@
             style="@style/btnStyleBlackpearl"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
+            android:layout_margin="10dp"
             android:layout_weight="1"
             android:onClick="onSetSelectVariableParams"
             android:text="Accept" />

@@ -151,6 +151,11 @@ public class ButtonVariable extends PositionableObject {
 			paint.setColor(Color.WHITE);
 			paint.setStrokeWidth(8.0f);
 		}
+		else if(modificate)
+		{
+			paint.setStrokeWidth(8.0f);
+			paint.setColor(Color.parseColor("#DF3A01"));
+		}
 			
 		
 		c.drawPath(path, paint);
@@ -195,6 +200,7 @@ public class ButtonVariable extends PositionableObject {
          varSelect.setStringValue(nameVar);
          varSelect.setParameter(parameter);
          ((ActivityScratch)getActivity()).showButtonParameters(varSelect);
+         modificate=true;
 	}
 
 	public double getVariableValue()

@@ -1,6 +1,8 @@
 package com.test;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint.Style;
 
 public class ButtonLinkAddable extends PositionableObject {
 
@@ -194,7 +196,7 @@ public class ButtonLinkAddable extends PositionableObject {
 	@Override
 	protected  void onDraw(Canvas c) {
 		if(child!=null)child.onDraw(c);// TODO Auto-generated method stub
-	
+		
 	}
 
 	@Override
@@ -205,7 +207,31 @@ public class ButtonLinkAddable extends PositionableObject {
 
 	@Override
 	protected void drawBorders(Canvas c) {
-		// TODO Auto-generated method stub
+		paint.setColor(Color.BLACK);
+		paint.setStrokeWidth(4.0f);
+		paint.setShader(null);
+		paint.setStyle(Style.STROKE);
+		
+		if(linkable)
+		{
+			paint.setStrokeWidth(8.0f);
+			paint.setColor(Color.GREEN);
+			
+		}
+		else if(addable)
+		{
+			paint.setStrokeWidth(8.0f);
+			paint.setColor(Color.YELLOW);
+		
+		}
+		
+		else if(modificate)
+		{
+			paint.setStrokeWidth(8.0f);
+			paint.setColor(Color.parseColor("#DF3A01"));
+		}
+		
+		c.drawPath(path, paint);
 		
 	}
 

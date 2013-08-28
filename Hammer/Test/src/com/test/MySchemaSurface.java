@@ -36,8 +36,7 @@ public class MySchemaSurface extends MySurfaceView
 	private ArrayList<PositionableObject > drawList=new ArrayList<PositionableObject >();
 	private ArrayList<PositionableObject > objectList=new ArrayList<PositionableObject >();
 	ArrayList<PositionableObject > reorderList=new ArrayList<PositionableObject >();
-	Bitmap cancel=BitmapFactory.decodeResource(getResources(), R.drawable.delete);
-	Bitmap modify=BitmapFactory.decodeResource(getResources(), R.drawable.icomodify);
+	Bitmap cancel=BitmapFactory.decodeResource(getResources(), R.drawable.del);
 	
 	public MySchemaSurface(Context context) {	
 		super(context);	
@@ -57,7 +56,7 @@ public class MySchemaSurface extends MySurfaceView
 		// TODO Auto-generated method stub
 	
 		
-		canvas.drawRGB(200, 200, 200);
+		canvas.drawRGB(255, 255, 255);
 		canvas.scale(scaleX,scaleY);
 		for(int i=0;i<drawList.size();i++)
 			{
@@ -116,9 +115,35 @@ public class MySchemaSurface extends MySurfaceView
 		
 	}
 	
+	private void deleteObjects(PositionableObject pos)
+	{
+		
+		objectList.remove(pos);
+		if(pos instanceof ButtonControl)
+		{
+			if(((ButtonControl) pos).getCondition()!=null)
+				deleteObjects(((ButtonControl) pos).getCondition());
+			
+			if(((ButtonControl) pos).getSlave()!=null)
+				deleteObjects(((ButtonControl) pos).getSlave());
+			
+		}
+		else if(pos instanceof ButtonRobot)
+		{
+			if(((ButtonRobot) pos).getComplement()!=null)
+				deleteObjects(((ButtonRobot) pos).getComplement());
+		}
+			
+		if(pos.getChild()!=null)
+			deleteObjects(pos.getChild());
+		
+		pos=null;
+	}
+	
 	private void  getDrawableObjects(PositionableObject pos)
 	{
 		pos.setActivity((Activity)context);
+		pos.setModBitmap(cancel);
 		objectList.add(pos);
 		if(pos instanceof ButtonControl)
 		{
@@ -143,12 +168,14 @@ public class MySchemaSurface extends MySurfaceView
 	private void deleteSchemaObject(PositionableObject bitmapSelected)
 	{
 		for(int i=drawList.size()-1;i>=0;i--)
+		{
 			if(drawList.get(i).equals(bitmapSelected))
+			{
+				deleteObjects(drawList.get(i));
 				drawList.remove(drawList.get(i));
-		
-		for(int i=objectList.size()-1;i>=0;i--)
-			if(objectList.get(i).equals(bitmapSelected))
-				objectList.remove(objectList.get(i));
+				
+			}
+		}
 		
 		bitmapSelected=null;
 	}
@@ -156,6 +183,8 @@ public class MySchemaSurface extends MySurfaceView
 	public boolean onTouchEvent(MotionEvent event)
 	{
 		if(isOnPause())return false;		
+		if(!touchEnabled)return false;
+		
 		
 		float px=event.getX();
 		float py=event.getY();
@@ -274,10 +303,13 @@ public class MySchemaSurface extends MySurfaceView
 		return true;
 	}
 
-	public ArrayList<PositionableObject > getList() {
+	public ArrayList<PositionableObject > getDrawList() {
 		return drawList;
 	}
 
+	public ArrayList<PositionableObject > getTotalObjectDrawnList() {
+		return objectList;
+	}
 	
 	public boolean saveObjectsList(ObjectOutputStream os ) throws IOException 
 	
@@ -343,6 +375,8 @@ public class MySchemaSurface extends MySurfaceView
 		scaleX=1.0f;
 		scaleY=1.0f;
 	}
+	
+	
 	
 	@Override
 	public boolean onDoubleTap(MotionEvent e) {		

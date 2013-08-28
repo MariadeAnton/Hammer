@@ -197,30 +197,6 @@ public class ButtonControl extends ButtonLinkAddable {
 	}
 	
 	
-
-	protected  void drawBorders(Canvas c)
-	{
-		paint.setShader(null);
-		paint.setColor(Color.BLACK);
-		paint.setStrokeWidth(4.0f);
-		paint.setStyle(Style.STROKE);
-		
-		if(linkable)
-		{
-			paint.setStrokeWidth(8.0f);
-			paint.setColor(Color.GREEN);
-			
-		}
-		if(addable)
-		{
-			paint.setStrokeWidth(8.0f);
-			paint.setColor(Color.YELLOW);
-		
-		}
-		
-		c.drawPath(path, paint);
-		
-	}
 	
 	protected  void drawText(Canvas c)
 	{
@@ -376,6 +352,7 @@ public void showParametersLayout() {
 		touchLay.setParameter(parameter);
 
 		((ActivityScratch)getActivity()).showButtonParameters(touchLay);
+		modificate=true;
 		}
 	}
 

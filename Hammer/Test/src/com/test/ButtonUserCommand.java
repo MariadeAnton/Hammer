@@ -1,6 +1,7 @@
 package com.test;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -14,6 +15,7 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.widget.EditText;
 
 public class ButtonUserCommand extends ButtonLinkAddable {
 
@@ -121,24 +123,7 @@ public class ButtonUserCommand extends ButtonLinkAddable {
 	
 	protected  void drawBorders(Canvas c)
 	{
-		paint.setColor(Color.BLACK);
-		paint.setStrokeWidth(4.0f);
-		paint.setStyle(Style.STROKE);
-		paint.setShader(null);
-		if(linkable)
-		{
-			paint.setStrokeWidth(8.0f);
-			paint.setColor(Color.GREEN);
-			
-		}
-		if(addable)
-		{
-			paint.setStrokeWidth(8.0f);
-			paint.setColor(Color.YELLOW);
-		
-		}
-		
-		c.drawPath(path, paint);
+		super.drawBorders(c);
 		if(type==PRESS_EXECUTE)return;
 		paint.setStyle(Style.FILL);
 		paint.setShader(new LinearGradient(0, 0, getWidth(),0,colorD,colorL,  Shader.TileMode.MIRROR));
@@ -198,11 +183,12 @@ public boolean execute(Client client) {
 		@Override
 		public void run() {
 				// TODO Auto-generated method stub
-				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
 		
-				builder
-				.setIcon(R.drawable.exit)
+			
+			MyCustomDialog.Builder customBuilder=new MyCustomDialog.Builder(activity);
+			
+			customBuilder
+				.setIcon(R.drawable.info)
 				.setMessage("Do you want to continue this loop?")
 				.setTitle("Continue")
 				.setPositiveButton("Continue",new DialogInterface.OnClickListener(){
@@ -225,7 +211,7 @@ public boolean execute(Client client) {
 					}
 					
 				});
-	     AlertDialog dialog = builder.create();
+	     Dialog dialog = customBuilder.create();
 		 dialog.show();
 		 
 		

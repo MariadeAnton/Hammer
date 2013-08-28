@@ -32,7 +32,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:onClick="Program"
-            android:src="@drawable/program"
+            android:src="@drawable/prog"
             android:stretchMode="none"
             android:text="Program" />
 
@@ -44,7 +44,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:onClick="Environment"
-            android:src="@drawable/env"
+            android:src="@drawable/envi"
             android:text="Environment" />
 
         <LinearLayout
@@ -55,12 +55,13 @@
 
             <ImageButton
                 android:id="@+id/cmd"
-                style="@style/btnStyleBlackpearl"
+                style="@drawable/b_blackpearl"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/command"
+                android:background="@drawable/b_blackpearl"
+                android:src="@drawable/com"
                 android:stretchMode="none"
                 android:text="Exit" />
 
@@ -72,7 +73,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:onClick="Configuration"
-                android:src="@drawable/setting"
+                android:src="@drawable/set"
                 android:text="Configuration" />
 
         </LinearLayout>
@@ -85,7 +86,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:onClick="Exit"
-            android:src="@drawable/exit"
+            android:src="@drawable/off"
             android:text="Button" />
 
     </LinearLayout>

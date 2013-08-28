@@ -37,6 +37,7 @@ public abstract class PositionableObject implements LinkableSchemaObject, Object
 	protected Path path=new Path();
 	
 	protected boolean erasable=false;
+	protected boolean modificate=false;
 	protected AuxBasicVariables basic;
 	protected PositionableObject parent;
 	protected PositionableObject child;
@@ -351,5 +352,14 @@ public abstract class PositionableObject implements LinkableSchemaObject, Object
 		this.activity = activity;
 	}
  
+	public void setModificate(boolean mod)
+	{
+		modificate=mod;
+	}
+	
+	public boolean isModificating()
+	{
+		return modificate;
+	}
 	
 }

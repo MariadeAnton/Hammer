@@ -31,7 +31,7 @@
             android:text="Load Program" />
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/dialogText"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"

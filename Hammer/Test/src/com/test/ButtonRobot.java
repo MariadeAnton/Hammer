@@ -146,24 +146,7 @@ public class ButtonRobot extends ButtonLinkAddable {
 	}
 	protected  void drawBorders(Canvas c)
 	{
-	
-		paint.setColor(Color.BLACK);
-		paint.setStrokeWidth(4.0f);
-		paint.setStyle(Style.STROKE);
-		paint.setShader(null);
-		if(linkable)
-		{
-			paint.setStrokeWidth(8.0f);
-			paint.setColor(Color.GREEN);
-			
-		}
-	
-		if(addable)
-		{
-			paint.setStrokeWidth(8.0f);
-			paint.setColor(Color.YELLOW);
-		
-		}
+		super.drawBorders(c);
 		
 		if(complementable)
 		{
@@ -272,6 +255,7 @@ public class ButtonRobot extends ButtonLinkAddable {
         
          inpose.setParameter(parameter);
          ((ActivityScratch)getActivity()).showButtonParameters(inpose);
+         modificate=true;
          }
          
 	}

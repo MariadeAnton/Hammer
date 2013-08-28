@@ -11,6 +11,7 @@ import android.graphics.Path;
 import android.graphics.Typeface;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.test.AuxBasicVariables.StringValue;
 
@@ -82,27 +83,7 @@ public class ButtonOperator extends ButtonLinkAddable {
 		c.drawPath(path, paint);
 	}
 	
-	protected  void drawBorders(Canvas c)
-	{
-		paint.setColor(Color.BLACK);
-		paint.setStrokeWidth(4.0f);
-		paint.setStyle(Style.STROKE);
-		paint.setShader(null);
-		if(linkable)
-		{
-			paint.setStrokeWidth(8.0f);
-			paint.setColor(Color.GREEN);
-			
-		}
-		if(addable)
-		{
-			paint.setStrokeWidth(8.0f);
-			paint.setColor(Color.YELLOW);
-		
-		}
-		
-		c.drawPath(path, paint);
-	}
+	
 
 	protected  void drawText(Canvas c)
 	{
@@ -233,7 +214,9 @@ public class ButtonOperator extends ButtonLinkAddable {
 		
 		touchLay.setIntercept(false);
 		touchLay.setStringValue(valueX);
+		((TextView)touchLay.findViewById(R.id.oper)).setText(name);
 		((ActivityScratch)getActivity()).showButtonParameters(touchLay);
+		modificate=true;
 	}
 	
 	public void setVariablesGrid(MyVariableGrid grid)

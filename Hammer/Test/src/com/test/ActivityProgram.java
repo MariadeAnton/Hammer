@@ -50,6 +50,7 @@ public class ActivityProgram extends Activity {
 		pathList=(ListView)findViewById(R.id.pathLoaded);
 		rajFragment=(MyRajawaliFragment) getFragmentManager().findFragmentById(R.id.rajFragment);
 		schema=(MySchemaSurface)findViewById(R.id.glEnvironment);
+		schema.enableTouchEvent(false);
 		schema.setScale(0.8f,0.5f);
 		if(GeneralParameters.getEnvironment()!=null)
 		pointsList.setAdapter(new AuxAdapterPoints(this,GeneralParameters.getEnvironment().getPoints()));
@@ -67,7 +68,7 @@ public class ActivityProgram extends Activity {
 		{
 			if (f.isFile())
 			{
-				item=new ListItem(getResources().getDrawable(R.drawable.hammer),f.getName(),yourDir.getAbsolutePath());
+				item=new ListItem(getResources().getDrawable(R.drawable.hammerfile),f.getName(),yourDir.getAbsolutePath());
 				aList.add(item);
 			}	
 			
@@ -101,11 +102,6 @@ public class ActivityProgram extends Activity {
 				var.loadVariables(is);
 				AuxAdapterVariables adapterVar=new AuxAdapterVariables(activity,var.getVariables());
 				var.setAdapter(adapterVar);
-		
-		//		for(int i=0;i<aList.size();i++)
-		//			list.getch.setBackgroundColor(Color.WHITE);
-				
-		//		view.setBackgroundColor(Color.parseColor("#AAAAAA"));
 				adapter.notifyDataSetChanged();
 				is.close();
 			

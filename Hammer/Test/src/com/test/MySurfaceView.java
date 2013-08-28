@@ -22,6 +22,7 @@ public abstract class MySurfaceView extends SurfaceView implements SurfaceHolder
 	protected GestureDetectorCompat gestureDetector;
 	protected Context context;
 	private boolean onPause=false;
+	protected boolean touchEnabled=true;
 	
 	public MySurfaceView(Context context) {	
 		super(context);	
@@ -95,4 +96,8 @@ public abstract class MySurfaceView extends SurfaceView implements SurfaceHolder
 		return onPause;
 	}
 
+	public void enableTouchEvent(boolean touchEnabled)
+	{
+		this.touchEnabled=touchEnabled;
+	}
 }

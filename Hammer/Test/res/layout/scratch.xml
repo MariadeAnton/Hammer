@@ -1114,7 +1114,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/m_green"
+                        android:background="#66CA66"
                         android:gravity="center"
                         android:text="Variables  List"
                         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -1131,7 +1131,7 @@
                             android:id="@+id/myVarSurface"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:background="#22C822"
+                            android:background="#AAFCAA"
                             android:numColumns="3" >
 
                         </com.test.MyVariableGrid>
@@ -1152,7 +1152,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="#00D8CC"
+                        android:background="#66AAF7"
                         android:gravity="center"
                         android:text="Piece Selected"
                         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -1161,7 +1161,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="0.5"
-                        android:background="#008287"
+                        android:background="#33C3C3"
                         android:orientation="horizontal" >
 
                         <TextView
@@ -1189,7 +1189,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="0.5"
-                        android:background="#008287"
+                        android:background="#33C3C3"
                         android:orientation="vertical" >
 
                         <LinearLayout
@@ -1242,7 +1242,7 @@
                         android:layout_height="0dp"
                         android:layout_gravity="center"
                         android:layout_weight="4"
-                        android:background="@drawable/m_teal"
+                        android:background="#AAF6F7"
                         android:textAlignment="center" >
 
                     </ListView>
