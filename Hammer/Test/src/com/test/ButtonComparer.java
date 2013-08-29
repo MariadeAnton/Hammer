@@ -91,10 +91,8 @@ public class ButtonComparer extends PositionableObject {
 			
 		}
 		else if(modificate)
-		{
-			paint.setStrokeWidth(8.0f);
-			paint.setColor(Color.parseColor("#A05000"));
-		}
+			paint.setStrokeWidth(16.0f);
+
 	
 		c.drawPath(path, paint);
 	}

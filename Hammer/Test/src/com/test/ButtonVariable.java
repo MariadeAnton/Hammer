@@ -152,10 +152,8 @@ public class ButtonVariable extends PositionableObject {
 			paint.setStrokeWidth(8.0f);
 		}
 		else if(modificate)
-		{
-			paint.setStrokeWidth(8.0f);
-			paint.setColor(Color.parseColor("#A05000"));
-		}
+			paint.setStrokeWidth(16.0f);
+
 			
 		
 		c.drawPath(path, paint);
@@ -165,13 +163,13 @@ public class ButtonVariable extends PositionableObject {
 	protected void drawText(Canvas c) {
 		// TODO Auto-generated method stub
 		
-		paint.setStyle(Style.FILL);
 		paint.setColor(Color.BLACK);
+		paint.setStyle(Style.FILL);
 		paint.setStrokeWidth(2.5f);
 		paint.setTypeface(Typeface.create("Helvetica",Typeface.BOLD_ITALIC));
-		paint.setTextAlign(Align.LEFT);
+		paint.setTextAlign(Align.CENTER);
 		paint.setTextSize(getHeight()/3.5f);
-		c.drawText(nameVar.getString(),posX-getWidth()/2+8,posY-(paint.descent()+paint.ascent())/2-getHeight()/8, paint);
+		c.drawText(getName(),posX,posY-(paint.descent()+paint.ascent())/2, paint);
 		
 	}
 
