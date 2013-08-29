@@ -165,13 +165,14 @@ public void onItemClick(AdapterView<?> adapter, View view, int position, long ar
        public void onClick(DialogInterface dialog, int id) {
     	   changeVariableValue(name.getText().toString(),Double.valueOf(newValue.getText().toString()));
     	  adapt.notifyDataSetChanged();
+    		dialog.dismiss();
          
        }
    })
    .setNegativeButton("Don't change", new DialogInterface.OnClickListener() {
        public void onClick(DialogInterface dialog, int id) {
     	  
-           // User cancelled the dialog
+    		dialog.dismiss();
        }
    });
 

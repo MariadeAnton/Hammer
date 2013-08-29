@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ public class ActivityConfig extends Activity {
 		port=(EditText)findViewById(R.id.confPort);
 		port.setHint(Integer.toString(GeneralParameters.getPort()));
 		accept=(Button)findViewById(R.id.confA);
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 	
 	}
 	

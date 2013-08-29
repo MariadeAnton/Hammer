@@ -33,7 +33,8 @@
             </intent-filter>
         </activity>
         <activity android:name="ActivityConfig"
-             android:screenOrientation="landscape"></activity>
+             android:screenOrientation="landscape"
+              android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name="ActivityProgram"
             	 android:screenOrientation="landscape"></activity>
         <activity android:name="ActivityEnvironment"
