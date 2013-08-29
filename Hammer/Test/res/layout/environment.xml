@@ -26,7 +26,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="#333333"
+            android:background="#111111"
             android:gravity="center"
             android:text="XML Files"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -68,7 +68,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:background="#FF2E12"
+                    android:background="@drawable/m_red"
                     android:gravity="center"
                     android:text="Environment 3D"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -101,7 +101,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="#00D8CC"
+                        android:background="@drawable/m_blue"
                         android:gravity="center"
                         android:text="Points"
                         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -110,7 +110,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="#008287" >
+                        android:background="@drawable/m_teal" >
 
                         <TextView
                             android:id="@+id/TextView05"
@@ -158,7 +158,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="5"
-                        android:background="@drawable/m_teal" >
+                        android:background="#AAF6F7" >
                     </ListView>
                 </LinearLayout>
 
@@ -174,7 +174,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="#00D8CC"
+                        android:background="@drawable/m_blue"
                         android:gravity="center"
                         android:text="Piece Path"
                         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -183,7 +183,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="#008287" >
+                        android:background="@drawable/m_teal" >
 
                         <TextView
                             android:id="@+id/TextView06"
@@ -231,7 +231,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="0dp"
                         android:layout_weight="5"
-                        android:background="@drawable/m_teal" >
+                        android:background="#AAF6F7" >
                     </ListView>
                 </LinearLayout>
             </LinearLayout>

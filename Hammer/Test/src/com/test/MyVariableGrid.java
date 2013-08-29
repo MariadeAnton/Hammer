@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.text.InputType;
@@ -115,30 +116,31 @@ public class MyVariableGrid extends GridView implements OnItemClickListener,OnIt
 		
 		final AdapterView<?> adapt=adapter;
 		final int position=pos;
-		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		MyCustomDialog.Builder builder = new MyCustomDialog.Builder(context);
 
 		// 2. Chain together various setter methods to set the dialog characteristics
 		builder.setMessage("Do you want to erase this variable?")
-		.setIcon(R.drawable.delete)
+		.setIcon(R.drawable.delwhite)
        .setTitle("ERASE VARIABLE "+"'"+((Variable) adapt.getItemAtPosition(pos)).getName()+"'")
        .setPositiveButton("Erase", new DialogInterface.OnClickListener() {
            public void onClick(DialogInterface dialog, int id) {
         	   variables.remove((Variable) adapt.getItemAtPosition(position));
         	   	AuxAdapterVariables aux=(AuxAdapterVariables)((MyVariableGrid)adapt).getAdapter();
         	   	aux.notifyDataSetChanged();
+        	   	dialog.dismiss();
              
            }
        })
        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
            public void onClick(DialogInterface dialog, int id) {
-               // User cancelled the dialog
+              dialog.dismiss();
            }
        });
 
 
 		// 3. Get the AlertDialog from create()
 	
-		AlertDialog dialog = builder.create();
+		Dialog dialog = builder.create();
 		dialog.show();
        // TODO Auto-generated method stub// TODO Auto-generated method stub
 		return false;
@@ -151,14 +153,14 @@ public void onItemClick(AdapterView<?> adapter, View view, int position, long ar
 	newValue.setRawInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_FLAG_SIGNED|InputType.TYPE_NUMBER_FLAG_DECIMAL);
 	final AuxAdapterVariables adapt=(AuxAdapterVariables)((MyVariableGrid)adapter).getAdapter();
 	final TextView name= (TextView)view.findViewById(R.id.cnameVar);
-	AlertDialog.Builder builder = new AlertDialog.Builder(context);
+	MyCustomDialog.Builder builder = new MyCustomDialog.Builder(context);
 
 	// 2. Chain together various setter methods to set the dialog characteristics
 	builder
-	.setIcon(R.drawable.modify)
+	.setIcon(R.drawable.mod)
 	.setMessage("New Value:")
    .setTitle("Change '"+name.getText().toString()+"' value")
-   .setView(newValue)
+   .setContentView(newValue)
    .setPositiveButton("Change", new DialogInterface.OnClickListener() {
        public void onClick(DialogInterface dialog, int id) {
     	   changeVariableValue(name.getText().toString(),Double.valueOf(newValue.getText().toString()));
@@ -176,7 +178,7 @@ public void onItemClick(AdapterView<?> adapter, View view, int position, long ar
 
 	// 3. Get the AlertDialog from create()
 
-	AlertDialog dialog = builder.create();
+	Dialog dialog = builder.create();
 	dialog.show();
 	
 	

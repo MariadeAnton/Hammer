@@ -1114,7 +1114,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="#66CA66"
+                        android:background="@drawable/m_green"
                         android:gravity="center"
                         android:text="Variables  List"
                         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -1152,7 +1152,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="#66AAF7"
+                        android:background="@drawable/m_blue"
                         android:gravity="center"
                         android:text="Piece Selected"
                         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -1161,7 +1161,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="0.5"
-                        android:background="#33C3C3"
+                        android:background="@drawable/m_teal"
                         android:orientation="horizontal" >
 
                         <TextView
@@ -1189,7 +1189,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="0.5"
-                        android:background="#33C3C3"
+                        android:background="@drawable/m_teal"
                         android:orientation="vertical" >
 
                         <LinearLayout
