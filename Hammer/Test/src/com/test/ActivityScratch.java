@@ -64,7 +64,7 @@ public class ActivityScratch extends Activity {
 	private MyTouchableLayout mup,mdo,mle,tux,tuy,tuz;
 	private MyTouchableLayout pressexe,repeat,ifclause,dowhile,cwhile;
 	private MyTouchableLayout greater,less,less_equal,greater_equal,equal,
-							 c_greater,c_less,c_less_equal,c_greater_equal,c_equal;
+							 c_greater,c_less,c_less_equal,c_greater_equal,c_equal,always;
 	private MyTouchableLayout add,sustract,multiply,divide,addOne,sustractOne,reasign,value
 							,c_add,c_sustract,c_multiply,c_divide;
 	private MyTouchableLayout sip,deburring;
@@ -211,7 +211,8 @@ public class ActivityScratch extends Activity {
 		c_less_equal.defineValues("<=",  ObjectExecutable.C_LESS_EQUAL_THAN,2,"ButtonComparer");
 		c_equal=(MyTouchableLayout)findViewById(R.id.c_equal);
 		c_equal.defineValues("==",  ObjectExecutable.C_EQUAL_THAN,2,"ButtonComparer");
-		
+		always=(MyTouchableLayout)findViewById(R.id.always);
+		always.defineValues("Always",  ObjectExecutable.ALWAYS,2,"ButtonComparer");
 		
 		add=(MyTouchableLayout)findViewById(R.id.xpy);
 		add.defineValues("+",  ObjectExecutable.ADD, 2,"ButtonOperator");
@@ -301,7 +302,7 @@ public class ActivityScratch extends Activity {
 		c_sustract.setOnTouchListener(new MyTouchListener());
 		c_multiply.setOnTouchListener(new MyTouchListener());
 		c_divide.setOnTouchListener(new MyTouchListener());
-		
+		always.setOnTouchListener(new MyTouchListener());
 		
 		
 		

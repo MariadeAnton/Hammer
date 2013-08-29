@@ -557,6 +557,26 @@
                                 android:textStyle="bold"
                                 android:visibility="visible" />
                         </com.test.MyTouchableLayout>
+                        
+                          <com.test.MyTouchableLayout
+                            android:id="@+id/always"
+                            android:layout_columnSpan="1"
+                            android:layout_gravity="left"
+                            android:layout_margin="5dp"
+                            android:layout_rowSpan="1"
+                            android:background="@drawable/comp_draw" >
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_gravity="center"
+                                android:text="Always"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:visibility="visible" />
+                        </com.test.MyTouchableLayout>
                     </GridLayout>
 
                 </ScrollView>

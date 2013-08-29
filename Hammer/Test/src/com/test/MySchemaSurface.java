@@ -384,7 +384,18 @@ public class MySchemaSurface extends MySurfaceView
 		{
 			float px=e.getX();
 			float py=e.getY();
-			if( px<(objectList.get(i).getWidth()/2 + objectList.get(i).getPosX()) && px>( objectList.get(i).getPosX()-objectList.get(i).getWidth()/2)
+			if(objectList.get(i) instanceof ButtonControl)
+			{
+				if( px<(objectList.get(i).getWidth()/3 + objectList.get(i).getPosX()) && px>( objectList.get(i).getPosX()-objectList.get(i).getWidth()/2)
+				&& py<(((ButtonControl)objectList.get(i)).getHeightSup()/2 + objectList.get(i).getPosY()) && py>( objectList.get(i).getPosY()-((ButtonControl)objectList.get(i)).getHeightSup()/2))
+				{
+					bitmapSelected=objectList.get(i);
+					bitmapSelected.showParametersLayout();	
+					break;	
+				}
+			}
+				
+			else if( px<(objectList.get(i).getWidth()/2 + objectList.get(i).getPosX()) && px>( objectList.get(i).getPosX()-objectList.get(i).getWidth()/2)
 				&& py<(objectList.get(i).getHeight()/2 + objectList.get(i).getPosY()) && py>( objectList.get(i).getPosY()-objectList.get(i).getHeight()/2))
 			{
 				bitmapSelected=objectList.get(i);

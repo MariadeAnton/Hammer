@@ -167,6 +167,9 @@ public class ButtonComparer extends PositionableObject {
 			case ObjectExecutable.LESS_EQUAL_THAN:
 				if(variables.searchVariable(vA.getString())<=variables.searchVariable(vB.getString()))	return true;
 				break;
+			case ObjectExecutable.ALWAYS:
+				return true;
+				
 				
 			default:
 				break;
@@ -174,7 +177,7 @@ public class ButtonComparer extends PositionableObject {
 		}
 		
 		
-		return true;
+		return false;
 		
 	
 	}

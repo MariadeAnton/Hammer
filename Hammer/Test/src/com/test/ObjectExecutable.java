@@ -29,6 +29,7 @@ public interface ObjectExecutable {
 	static final int REASIGN_VALUE=49;
 	static final int ADD_ONE=50;
 	static final int SUSTRACT_ONE=51;
+	static final int ALWAYS=51;
 	
 	
 	static final int CONSTANT=400;
