@@ -204,17 +204,18 @@ public class ButtonOperator extends ButtonLinkAddable {
 		{
 			touchLay=(MyTouchableLayout)activity.findViewById(R.id.compLayConst);
 			touchLay.setStringValue2(valueY);
+			((TextView)touchLay.findViewById(R.id.oper)).setText(name);
 	         
 		}
 		else
 		{
 			touchLay=(MyTouchableLayout)activity.findViewById(R.id.compLay);
 			touchLay.setStringValue2(valueY);
+			((TextView)touchLay.findViewById(R.id.oper)).setText(name);
 		}
 		
 		touchLay.setIntercept(false);
 		touchLay.setStringValue(valueX);
-		((TextView)touchLay.findViewById(R.id.oper)).setText(name);
 		((ActivityScratch)getActivity()).showButtonParameters(touchLay);
 		modificate=true;
 	}

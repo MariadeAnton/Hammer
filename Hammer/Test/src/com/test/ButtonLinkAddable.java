@@ -228,7 +228,7 @@ public class ButtonLinkAddable extends PositionableObject {
 		else if(modificate)
 		{
 			paint.setStrokeWidth(8.0f);
-			paint.setColor(Color.parseColor("#DF3A01"));
+			paint.setColor(Color.parseColor("A05000"));
 		}
 		
 		c.drawPath(path, paint);
