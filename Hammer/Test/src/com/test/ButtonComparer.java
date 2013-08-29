@@ -106,6 +106,7 @@ public class ButtonComparer extends PositionableObject {
 		paint.setTextAlign(Align.CENTER);
 		paint.setTextSize(getHeight()/2);
 		c.drawText(getName(),posX,posY-(paint.descent()+paint.ascent())/2, paint);
+		if(type==ALWAYS)return;
 		c.drawText(vA.getString(),posX-width/4,posY-(paint.descent()+paint.ascent())/2, paint);
 		c.drawText(vB.getString(),posX+width/4,posY-(paint.descent()+paint.ascent())/2, paint);
 		
@@ -244,8 +245,8 @@ public class ButtonComparer extends PositionableObject {
 	@Override
 	public void showParametersLayout() {
 		
-		
-		 MyTouchableLayout comParam; 
+		if(type==ALWAYS)return;
+		MyTouchableLayout comParam; 
 		   
 		if(type>=CONSTANT)
 			comParam=(MyTouchableLayout)activity.findViewById(R.id.compLayConst);

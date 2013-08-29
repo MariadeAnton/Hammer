@@ -169,7 +169,7 @@ public class ButtonVariable extends PositionableObject {
 		paint.setTypeface(Typeface.create("Helvetica",Typeface.BOLD_ITALIC));
 		paint.setTextAlign(Align.CENTER);
 		paint.setTextSize(getHeight()/3.5f);
-		c.drawText(getName(),posX,posY-(paint.descent()+paint.ascent())/2, paint);
+		c.drawText(nameVar.getString(),posX,posY-(paint.descent()+paint.ascent())/2, paint);
 		
 	}
 
