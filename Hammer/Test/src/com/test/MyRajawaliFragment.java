@@ -80,8 +80,13 @@ public class MyRajawaliFragment extends  RajawaliFragment implements OnTouchList
 					e.printStackTrace();
 				}
 				/////////////////////////////////////
+				
 				AuxPiece ap=glRajSurface.getObjectSelected();
-				if(ap==null)return false;
+				if(ap==null)
+					{
+						listPath.setAdapter(new AuxAdapterPoints(getActivity(),new ArrayList<TriplePoint>()));
+						return false;
+					}
 					if(ap.isTouched())
 					{
 						ArrayList<TriplePoint>piecePath=new ArrayList<TriplePoint>();

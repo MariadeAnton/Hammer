@@ -246,7 +246,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/m_blue"
                     android:gravity="center"
-                    android:text="Piece Path"
+                    android:text="Part Path"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <LinearLayout

@@ -62,7 +62,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/m_orange"
                         android:onClick="onChangeCategories"
-                        android:text="Comparers" />
+                        android:text="Relational operators" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -980,7 +980,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:layout_gravity="center|left"
-                            android:text="   Break bucle"
+                            android:text="   Loop Break"
                             android:textColor="#000000"
                             android:textSize="20sp"
                             android:textStyle="bold"
@@ -1174,7 +1174,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/m_blue"
                         android:gravity="center"
-                        android:text="Piece Selected"
+                        android:text="Part Selected"
                         android:textAppearance="?android:attr/textAppearanceLarge" />
 
                     <LinearLayout
@@ -1200,7 +1200,7 @@
                             android:layout_height="fill_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="No piece selected"
+                            android:text="No part selected"
                             android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     </LinearLayout>

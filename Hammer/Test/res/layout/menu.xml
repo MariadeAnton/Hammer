@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/darklogo"
+    android:background="@drawable/logo"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -26,11 +26,13 @@
 
         <ImageButton
             android:id="@+id/prog"
-            style="@style/btnStyleBlackpearl"
+            style="@style/btnStyleBeige"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
+            android:alpha="0.8"
+            android:background="@drawable/b_beige"
             android:onClick="Program"
             android:src="@drawable/prog"
             android:stretchMode="none"
@@ -38,11 +40,12 @@
 
         <ImageButton
             android:id="@+id/env"
-            style="@style/btnStyleBlackpearl"
+            style="@style/btnStyleBeige"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
+            android:alpha="0.8"
             android:onClick="Environment"
             android:src="@drawable/envi"
             android:text="Environment" />
@@ -55,23 +58,25 @@
 
             <ImageButton
                 android:id="@+id/cmd"
-                style="@drawable/b_blackpearl"
+                style="@style/btnStyleBeige"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/b_blackpearl"
+                android:alpha="0.8"
+                android:background="@drawable/b_beige"
                 android:src="@drawable/com"
                 android:stretchMode="none"
                 android:text="Exit" />
 
             <ImageButton
                 android:id="@+id/state"
-                style="@style/btnStyleBlackpearl"
+                style="@style/btnStyleBeige"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:alpha="0.8"
                 android:onClick="Configuration"
                 android:src="@drawable/set"
                 android:text="Configuration" />
@@ -80,11 +85,12 @@
 
         <ImageButton
             android:id="@+id/pal"
-            style="@style/btnStyleBlackpearl"
+            style="@style/btnStyleBeige"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
+            android:alpha="0.8"
             android:onClick="Exit"
             android:src="@drawable/off"
             android:text="Button" />

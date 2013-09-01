@@ -72,7 +72,7 @@ public class Client extends Thread {
 		values[1]=pos.y;
 		values[2]=pos.z;	
 		values[3]=0;
-		values[4]=165;
+		values[4]=180;
 		values[5]=0;
 		SendMessage(ApoloMessage.INIT_POSE);
 	
@@ -124,7 +124,7 @@ public class Client extends Thread {
 				
 				outMessage.write(out);
 				inMessage.read(in);
-				Thread.sleep(600);
+				Thread.sleep(1200);
 				
 		}
 		catch (IOException e) 

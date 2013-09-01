@@ -144,8 +144,8 @@ public class ButtonComparer extends PositionableObject {
 	public boolean execute(Client client) {
 		
 		variables=((ActivityScratch)getActivity()).getVarGrid();
-		
-		if(variables.searchVariable(vA.getString())==null || variables.searchVariable(vB.getString())==null)
+		if(type!=ALWAYS)
+			if(variables.searchVariable(vA.getString())==null || variables.searchVariable(vB.getString())==null)
 					return false;
 		switch (type)
 		{

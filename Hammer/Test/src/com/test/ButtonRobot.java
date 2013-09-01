@@ -80,10 +80,12 @@ public class ButtonRobot extends ButtonLinkAddable {
 			ArrayList<TriplePoint> pathPiece=piece.getPath();
 			
 			double depth=complement.getVariableValue();
-			client.sendInitPos(INITIAL,SPEED);	
+		
 			client.sendPosition(0,0,depth, 0, 0, 0);
 			for(int i=0;i<pathPiece.size();i++)
-				client.sendPosition(pathPiece.get(i).x,pathPiece.get(i).y,pathPiece.get(i).z, 0, 0, 0);
+				client.sendInitPos(pathPiece.get(i),parameter.getValue());
+			
+			client.sendInitPos(INITIAL,SPEED);	
 			
 			
 			

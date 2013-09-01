@@ -179,14 +179,13 @@ public boolean execute(Client client) {
 		
 		final Object lock=new Object();;
 		boolean cont=false;
-		
+		Dialog dialog=null;
 		@Override
 		public void run() {
 				// TODO Auto-generated method stub
 		
 			
 			MyCustomDialog.Builder customBuilder=new MyCustomDialog.Builder(activity);
-			
 			customBuilder
 				.setIcon(R.drawable.info)
 				.setMessage("Do you want to continue this loop?")
@@ -198,6 +197,7 @@ public boolean execute(Client client) {
 						// TODO Auto-generated method stub
 						cont=true;
 						synchronized(lock){	lock.notify();}
+						dialog.dismiss();
 						
 					}
 					
@@ -208,10 +208,11 @@ public boolean execute(Client client) {
 					public void onClick(DialogInterface arg0, int arg1) {
 						cont=false;// TODO Auto-generated method stub
 						synchronized(lock){	lock.notify();}
+						dialog.dismiss();
 					}
 					
 				});
-	     Dialog dialog = customBuilder.create();
+	     dialog = customBuilder.create();
 		 dialog.show();
 		 
 		

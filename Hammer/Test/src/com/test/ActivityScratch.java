@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -247,7 +248,7 @@ public class ActivityScratch extends Activity {
 		deburring.defineValues("Deburring",  ObjectExecutable.DEBURRING, 2,"ButtonRobot");
 		
 		conf=(MyTouchableLayout)findViewById(R.id.conf);
-		conf.defineValues("Confirm",  ObjectExecutable.CONFIRM, 2,"ButtonUserCommand");
+		conf.defineValues("Loop Break",  ObjectExecutable.CONFIRM, 2,"ButtonUserCommand");
 		pressexe=(MyTouchableLayout)findViewById(R.id.pressexe);
 		pressexe.defineValues("Start",  ObjectExecutable.PRESS_EXECUTE, 1,"ButtonUserCommand");
 	
@@ -322,11 +323,13 @@ public class ActivityScratch extends Activity {
 	@Override
 	public void onBackPressed() {
 		final EditText saveName=new EditText(this);
+		saveName.setHint("hammer.hcm");
+		saveName.setHintTextColor(Color.parseColor("#008A00"));
 		
 		MyCustomDialog.Builder customBuilder=new MyCustomDialog.Builder(this);
 		Dialog  dialog=null;
 		customBuilder.setTitle("SAVE PROGRAM")
-                .setMessage("Do you want to save the program??")
+                .setMessage("Do you want to save the program?\nIntroduce name:")
                 .setContentView(saveName)
                 .setIcon(R.drawable.savedata)
                 .setNegativeButton("Cancel", 
@@ -398,7 +401,7 @@ public class ActivityScratch extends Activity {
 			
 	          
 			customBuilder.setTitle("SAVE PROGRAM")
-	                .setMessage("Do you want to save the program??")
+	                .setMessage("Do you want to save the program?\nIntroduce name:")
 	                .setContentView(saveName)
 	                .setIcon(R.drawable.savedata)
 	                .setNegativeButton("Cancel", 
@@ -428,8 +431,8 @@ public class ActivityScratch extends Activity {
 				
 		          
 				customBuilder.setTitle("CONNECT TO EASYROB")
-		                .setMessage("Do you want connect the program to IP "+GeneralParameters.ip+
-		    					" in port "+GeneralParameters.port+" ?")
+		                .setMessage("Do you want to connect the program at IP "+GeneralParameters.ip+
+		    					" : "+GeneralParameters.port+" ?")
 		                .setIcon(R.drawable.connect)
 		                .setNegativeButton("Cancel", 
 		                        new DialogInterface.OnClickListener() {
@@ -599,18 +602,18 @@ public class ActivityScratch extends Activity {
 		name=(TextView)var.findViewById(R.id.nameVar);
 		cname=(TextView)var.findViewById(R.id.cnameVar);
 		if(cname.getText().length()>0)variable.setName(cname.getText().toString());
-		else variable.setName("?");
+		else variable.setName("¿?");
 		value=(TextView)var.findViewById(R.id.valueVar);
-		if(value.getText().length()>0)variable.setValue(Double.valueOf(value.getText().toString()));
+		if(value.getText().length()>0 && value.getText().toString().compareTo("¿?")!=0)variable.setValue(Double.valueOf(value.getText().toString()));
 		else variable.setValue(0);
 		
 		varGrid.createVariable(variable);
 		showButtonParameters(dispatcher);
 		((AuxAdapterVariables)varGrid.getAdapter()).notifyDataSetChanged();
 	
-		name.setText("?");
-		cname.setText("?");
-		value.setText("?");
+		name.setText("¿?");
+		cname.setText("¿?");
+		value.setText("¿?");
 	}
 	
 	public void onCancelVariable(View view)

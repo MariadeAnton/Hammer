@@ -36,6 +36,7 @@ public class HammerEnvironment {
 		boolean readZ=false;
 		boolean readList=false;
 		boolean readPiece=false;
+		boolean readPosition=false;
 		AuxPiece piece=null;
 		TriplePoint point = null;
 		
@@ -61,7 +62,8 @@ public class HammerEnvironment {
 			    		  else  if(parser.getName().compareTo("PointsList")==0)
 			    			  readList=true;
 			    		  
-			    		  else if(parser.getName().compareTo("Point")==0)
+			    		  
+			    		  else if(parser.getName().compareTo("Point")==0 || parser.getName().compareTo("Position")==0 )
 			    			  point=AuxBasicVariables.createTriplePoint();
 
 			    		  else if(parser.getName().compareTo("X")==0)
@@ -76,7 +78,12 @@ public class HammerEnvironment {
 			    		  
 			    		  else if(parser.getName().compareTo("Piece")==0)
 			    		  {
-			    			  piece=new AuxPiece(MyRajawaliRenderer.createPiece(parser.getAttributeValue(0)));
+			    			  try {
+								piece=new AuxPiece(MyRajawaliRenderer.createPiece(parser.getAttributeValue(0)));
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 			    			  piece.setName(parser.getAttributeValue(0));
 			    			  readPiece=true;
 		
@@ -109,6 +116,12 @@ public class HammerEnvironment {
 				    		  else if(parser.getName().compareTo("Point")==0 && readPiece)
 				    		  {
 				    			  piece.getPath().add(point);
+				    			  
+				    		  }
+				    		 
+				    		  else if(parser.getName().compareTo("Position")==0)
+				    		  {
+				    			  piece.setPositionXYZ(point);
 				    			  
 				    		  }
 				    		 

@@ -16,6 +16,7 @@ public class AuxPiece  {
 		
 		private BaseObject3D obj3D=null;
 		private String name;
+		private TriplePoint positionXYZ=AuxBasicVariables.createTriplePoint(0,0,0);
 		private ArrayList<TriplePoint> path=new ArrayList<TriplePoint>();
 		boolean touched=false;
 		
@@ -66,6 +67,14 @@ public class AuxPiece  {
 
 		public void setName(String name) {
 			this.name = name;
+		}
+
+		public TriplePoint getPositionXYZ() {
+			return positionXYZ;
+		}
+
+		public void setPositionXYZ(TriplePoint positionXYZ) {
+			this.positionXYZ = positionXYZ;
 		}
 		
 		

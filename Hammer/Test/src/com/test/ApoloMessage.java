@@ -24,6 +24,7 @@ public class ApoloMessage {
 	
 	
 	
+	
 	byte[] pData=new byte[500];//pointer to a byte secuence that has a message (header+size+type+specific data)
 	byte[] world=new byte[500],name=new byte[500],bindata=new byte[500]; //utility fields to avoid reinterpretation
 	int size=0;

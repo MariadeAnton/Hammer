@@ -34,7 +34,8 @@
             android:background="@drawable/m_blue"
             android:ems="10"
             android:gravity="center_vertical|center_horizontal"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:textColorHint="#008A00" />
 
     </LinearLayout>
 
@@ -67,7 +68,8 @@
             android:background="@drawable/m_blue"
             android:ems="10"
             android:gravity="center_horizontal|center_vertical"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textColorHint="#008A00" />
 
     </LinearLayout>
 

@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.OptionalDataException;
 import java.util.ArrayList;
+import java.util.Stack;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -15,11 +16,18 @@ import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
+import rajawali.materials.SimpleMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
+import rajawali.math.vector.Vector3;
+import rajawali.parser.AParser.ParsingException;
+import rajawali.parser.ObjParser;
+import rajawali.primitives.Line3D;
 import rajawali.renderer.RajawaliRenderer;
+import rajawali.util.MeshExporter;
 import rajawali.util.ObjectColorPicker;
 import rajawali.util.OnObjectPickedListener;
+import rajawali.util.exporter.SerializationExporter;
 import android.content.Context;
 import android.os.Environment;
 
@@ -64,9 +72,8 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 		if(!onResume)return;
 		super.onDrawFrame(glUnused);
 		if(reload)reloadEnvironmentPieces(auxEnv);
-		for(int i=0;i<objects3D.size();i++)
-			objects3D.get(i).getModel3D().setRotY(objects3D.get(i).getModel3D().getRotY()+1);
-		
+		if(objectSelected!=null)
+			objectSelected.getModel3D().setRotY(objectSelected.getModel3D().getRotY()+1);
 		
 	}
 
@@ -75,14 +82,54 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 	@Override
 	protected void initScene() {
 		
-	
+		
+		
 		mLight = new DirectionalLight(1f, 0.2f, -1.0f); // set the direction
 		mLight.setColor(1.0f, 1.0f, 1.0f);
 		mLight.setPower(2);
 		mPicker = new ObjectColorPicker(this);
 		mPicker.setOnObjectPickedListener(this);
+		getCurrentCamera().setZ(20);
+		getCurrentCamera().setY(5);
+		getCurrentCamera().setX(0);
+		getCurrentCamera().setLookAt(0, 0, 0);
 		reloadEnvironmentPieces(GeneralParameters.getEnvironment());
-		getCurrentCamera().setZ(10);
+		createGrid(200,200,2,0xffffff00);
+		/*
+		try{
+		ObjParser parser;
+		parser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.cardoor_obj);
+		
+		
+			parser.parse();
+		
+		
+		BaseObject3D obj=parser.getParsedObject();
+		//DiffuseMaterial material = new DiffuseMaterial();
+		
+		//Texture texture=new Texture(R.drawable.logo);
+
+
+	//	material.addTexture(texture);
+		
+
+	//	obj.setMaterial(material);
+	
+		obj.addLight(mLight);
+		obj.setPosition(0,0,0);
+	//	obj.setScale(0.5f, 0.5f, 0.5f);
+
+		MeshExporter exporter=new MeshExporter(obj);
+		exporter.export("mydoor",SerializationExporter.class);
+		
+		
+		
+		addChild(obj);
+		} catch (ParsingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		*/
 		}
 	
 
@@ -101,29 +148,37 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 	@Override
 	public void onObjectPicked(BaseObject3D object) {
 		
-
+	
+		
 		for(int i=0;i<objects3D.size();i++)	
 		{
 			if(objects3D.get(i).getModel3D().equals(object))
 			{
-				objectSelected=objects3D.get(i);
-				objectSelected.setTouched(true);
+					if(!objects3D.get(i).isTouched())
+					{
+						for(int z=0;z<objects3D.size();z++)objects3D.get(z).setTouched(false);
+						objectSelected=objects3D.get(i);
+						objectSelected.setTouched(true);
+						break;
+					}
+			
+					else
+					{
+					objects3D.get(i).setTouched(false);
+					objectSelected=null;
+					break;
+						
+					}
+				
 			}
+			
 		}
 		
 		
-		for(int i=0;i<objects3D.size();i++)
-			if(!objects3D.get(i).equals(objectSelected))
-				objects3D.get(i).setTouched(false);
 		
 		
-		for(AuxPiece ap:objects3D)
-		{
-			if(ap.isTouched())
-				ap.getModel3D().setScale(2.0f,2.0f,2.0f);
-			else
-				ap.getModel3D().setScale(1.0f,1.0f,1.0f);
-		}
+		
+		
 			
 		
 	}
@@ -146,44 +201,56 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 		int i=0;
 		for(AuxPiece child:objects3D)removeChild(child.getModel3D());
 		objects3D=new ArrayList<AuxPiece>();
-		for(AuxPiece piece:env.getPieces())
-		{	
-			try {
-			
+		
+		try {
+			for(AuxPiece piece:env.getPieces())
+			{	
+
 			AuxPiece aux=new AuxPiece();
+			
+			
 			aux.setModel3D(createPiece(piece.getName()));
+			aux.setPositionXYZ(piece.getPositionXYZ());
+			
 			aux.setPath(piece.getPath());
 			aux.setName(piece.getName());
 			DiffuseMaterial material = new DiffuseMaterial();
-			Texture texture=new Texture(R.drawable.logo);
+			material.setUseSingleColor(true);
 			
-			
-			material.addTexture(texture);
-			
-			
+			//Texture texture=new Texture(R.drawable.logo);
+	
+		
+			//material.addTexture(texture);
+
 			aux.getModel3D().setMaterial(material);
 			aux.getModel3D().addLight(mLight);
-			aux.getModel3D().setPosition(-4+i*8,0,0);
-			aux.getModel3D().setScale(1.0f, 1.0f, 1.0f);
-			addChild(aux.getModel3D()); 
+			aux.getModel3D().setPosition((float)aux.getPositionXYZ().x,(float)aux.getPositionXYZ().y
+					,(float)aux.getPositionXYZ().z);	
+				
+			addChild(aux.getModel3D());
+			 
 			mPicker.registerObject(aux.getModel3D());
 			objects3D.add(aux);
 			reload=false;
-			
-			}
-			catch (TextureException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-			}
 			i++;
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		
+	
 	}
 	
-	static public BaseObject3D createPiece(String name)
+		
+	
+	
+	static public BaseObject3D createPiece(String name) throws Exception
 	{
 	
+		
+		
+		
 		try {
 			
 			File file = new File(Environment.getExternalStorageDirectory()
@@ -220,13 +287,54 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 
 
 
+	public void createGrid(int height,int width,int linesSpace,int color)
+	{
+	
+		
+		
+		//HORIZONTAL LINES//
+		ArrayList<Line3D> lines=new ArrayList<Line3D>();
+		SimpleMaterial material = new SimpleMaterial();
+		material.setUseSingleColor(true);
+		
+		
+		for(int i=0;i<=height;i++)
+		{
+			Stack<Vector3> pointsH =new Stack<Vector3>();
+			pointsH.add(new Vector3((-width/2f)*linesSpace,0,(-height/2f+i)*linesSpace));
+			pointsH.add(new Vector3((-width/2f+width)*linesSpace,0,(-height/2f+i)*linesSpace));
+			Line3D horizontal = new Line3D(pointsH, 1, color);
+			horizontal.setMaterial(material);
+			lines.add(horizontal);
+		}
+		
+		//VERTICAL LINES//
+		
+		for(int i=0;i<=width;i++)
+		{
+			Stack<Vector3> pointsV =new Stack<Vector3>();
+			pointsV.add(new Vector3((-width/2f+i)*linesSpace,0,(-height/2f)*linesSpace));
+			pointsV.add(new Vector3((-width/2f+i)*linesSpace,0,(-height/2f+height)*linesSpace));
+			Line3D vertical = new Line3D(pointsV, 1, color);
+			vertical.setMaterial(material);
+			lines.add(vertical);
+		}
+
+		/**
+		 * A Line3D takes a Stack of <Number3D>s, thickness and a color
+		 */
+		for(int i=0;i<lines.size();i++)
+			addChild(lines.get(i));
+	}
 
 	
-	
-
-
-
 }
+
+	
+
+
+
+
 	
 
 
