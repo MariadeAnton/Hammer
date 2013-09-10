@@ -8,15 +8,12 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
 import android.app.FragmentManager;
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -33,7 +30,6 @@ public class ActivityEnvironment extends Activity {
 	
 	static String environmentFolder="XML/";
 	
-	private MySchemaSurface schema;
 	private ListView listXML,listPoints,listPath;
 	private ArrayList<ListItem> xList;
 	private ArrayList<TriplePoint>pList,pthList;
@@ -60,10 +56,7 @@ public class ActivityEnvironment extends Activity {
 		listPoints=(ListView)findViewById(R.id.listPoints);
 		listPath=(ListView)findViewById(R.id.listPath);
 		
-		schema=new MySchemaSurface(this);
-		schema.setScale(1.0f,0.5f);
-	
-		
+
 		
 		xList=new ArrayList<ListItem>();
 		adapterXML=new AdapterItems(this,xList);
@@ -145,10 +138,6 @@ class MyClickListener implements OnItemClickListener
 			glSurface.reLoad(environment);
 			for(TriplePoint p:environment.getPoints()) pList.add(p);
 			adapterPoints.notifyDataSetChanged();
-			
-			
-			
-			
 			
 
 			} catch (XmlPullParserException e) {

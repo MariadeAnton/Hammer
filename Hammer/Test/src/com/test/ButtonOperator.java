@@ -9,8 +9,6 @@ import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Typeface;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.test.AuxBasicVariables.StringValue;

@@ -52,6 +52,12 @@ public class MainActivity extends Activity {
 		startActivity(i);
 	}
 	
+	public void Loader(View view)
+	{
+		Intent i=new Intent(this,ActivityLoader.class);
+		startActivity(i);
+	}
+	
 	public void Environment(View view)
 	{
 		Intent i=new Intent(this,ActivityEnvironment.class);

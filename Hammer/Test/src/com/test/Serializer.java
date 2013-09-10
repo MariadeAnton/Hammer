@@ -5,8 +5,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OptionalDataException;
 import java.nio.ByteBuffer;
-
-import android.app.Activity;
 import android.graphics.Bitmap;
 
 import com.test.AuxBasicVariables.TriplePoint;

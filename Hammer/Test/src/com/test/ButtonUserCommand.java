@@ -1,6 +1,6 @@
 package com.test;
 
-import android.app.AlertDialog;
+
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Canvas;
@@ -12,10 +12,7 @@ import android.graphics.Path;
 import android.graphics.Path.Direction;
 import android.graphics.Shader;
 import android.graphics.Typeface;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.EditText;
+
 
 public class ButtonUserCommand extends ButtonLinkAddable {
 

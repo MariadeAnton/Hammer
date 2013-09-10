@@ -1,8 +1,6 @@
 package com.test;
 
 
-
-
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
@@ -11,8 +9,7 @@ import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Typeface;
-import android.view.View;
-import android.widget.LinearLayout;
+
 
 public class ButtonControl extends ButtonLinkAddable {
 

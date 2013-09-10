@@ -36,7 +36,6 @@ public class HammerEnvironment {
 		boolean readZ=false;
 		boolean readList=false;
 		boolean readPiece=false;
-		boolean readPosition=false;
 		AuxPiece piece=null;
 		TriplePoint point = null;
 		

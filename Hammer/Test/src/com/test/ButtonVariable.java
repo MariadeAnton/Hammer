@@ -10,8 +10,7 @@ import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
-import android.view.View;
-import android.widget.LinearLayout;
+
 
 public class ButtonVariable extends PositionableObject {
 

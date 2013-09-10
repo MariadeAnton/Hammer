@@ -11,7 +11,6 @@ import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ClipData;
@@ -456,7 +455,7 @@ public class ActivityScratch extends Activity {
 			
 			else
 			{
-				customBuilder.setMessage("Do you want disconnect the program?")
+				customBuilder.setMessage("Do you want to disconnect the program?")
 				.setIcon(R.drawable.connect)
 		       .setTitle("CONNECT TO EASYROB")
 		       .setNegativeButton("Disconnect", new DialogInterface.OnClickListener() {

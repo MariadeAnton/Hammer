@@ -17,17 +17,15 @@ import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.SimpleMaterial;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.Texture;
+
 import rajawali.math.vector.Vector3;
-import rajawali.parser.AParser.ParsingException;
-import rajawali.parser.ObjParser;
+
 import rajawali.primitives.Line3D;
 import rajawali.renderer.RajawaliRenderer;
-import rajawali.util.MeshExporter;
+
 import rajawali.util.ObjectColorPicker;
 import rajawali.util.OnObjectPickedListener;
-import rajawali.util.exporter.SerializationExporter;
+
 import android.content.Context;
 import android.os.Environment;
 
@@ -198,7 +196,6 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 	public void reloadEnvironmentPieces(HammerEnvironment env)
 	{
 		if(env==null)return;
-		int i=0;
 		for(AuxPiece child:objects3D)removeChild(child.getModel3D());
 		objects3D=new ArrayList<AuxPiece>();
 		
@@ -231,8 +228,7 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 			 
 			mPicker.registerObject(aux.getModel3D());
 			objects3D.add(aux);
-			reload=false;
-			i++;
+			reload=false;			
 			}
 			
 		} catch (Exception e) {

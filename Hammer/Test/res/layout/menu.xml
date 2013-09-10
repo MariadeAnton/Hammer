@@ -25,6 +25,20 @@
         android:orientation="vertical" >
 
         <ImageButton
+            android:id="@+id/loader"
+            style="@style/btnStyleBeige"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:alpha="0.8"
+            android:background="@drawable/b_beige"
+            android:onClick="Loader"
+            android:src="@drawable/info"
+            android:stretchMode="none"
+            android:text="Loader" />
+
+        <ImageButton
             android:id="@+id/prog"
             style="@style/btnStyleBeige"
             android:layout_width="fill_parent"

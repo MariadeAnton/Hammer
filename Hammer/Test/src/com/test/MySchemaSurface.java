@@ -5,16 +5,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.view.DragEvent;
 import android.view.MotionEvent;
@@ -136,8 +131,6 @@ public class MySchemaSurface extends MySurfaceView
 			
 		if(pos.getChild()!=null)
 			deleteObjects(pos.getChild());
-		
-		pos=null;
 	}
 	
 	private void  getDrawableObjects(PositionableObject pos)
@@ -176,8 +169,6 @@ public class MySchemaSurface extends MySurfaceView
 				
 			}
 		}
-		
-		bitmapSelected=null;
 	}
 
 	public boolean onTouchEvent(MotionEvent event)
@@ -247,7 +238,7 @@ public class MySchemaSurface extends MySurfaceView
 						
 
 						/*
- * 
+ 
 						if(bitmapSelected instanceof ButtonControl)
 							
 							if(((ButtonControl)bitmapSelected).getType()==ObjectExecutable.ELSE_IF 
@@ -315,11 +306,8 @@ public class MySchemaSurface extends MySurfaceView
 	
 	{
 		
-		
 		os.writeInt(drawList.size());
-		for(PositionableObject po:drawList) 	Serializer.writeObject(os,po);		
-		
-		
+		for(PositionableObject po:drawList) 	Serializer.writeObject(os,po);			
 		return true;
 		
 		

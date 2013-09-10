@@ -8,9 +8,7 @@ import android.graphics.Color;
 
 public class ButtonIfElse extends ButtonControl {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private ButtonIfElse auxIfClause=null;
 	private ButtonIfElse ifClause=null;

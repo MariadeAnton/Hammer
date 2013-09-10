@@ -13,8 +13,6 @@ import android.graphics.Path;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.view.Gravity;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.test.AuxBasicVariables.TriplePoint;

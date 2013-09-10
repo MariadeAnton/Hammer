@@ -7,11 +7,9 @@ import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
-import android.graphics.Path.Direction;
 import android.graphics.Path;
 import android.graphics.Typeface;
-import android.view.View;
-import android.widget.LinearLayout;
+
 
 
 public class ButtonMovement extends ButtonLinkAddable{
