@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.OptionalDataException;
+import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -17,9 +18,13 @@ import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.SimpleMaterial;
+import rajawali.materials.textures.ATexture.TextureException;
 
 import rajawali.math.vector.Vector3;
 
+import rajawali.parser.AParser.ParsingException;
+import rajawali.parser.Max3DSParser;
+import rajawali.parser.ObjParser;
 import rajawali.primitives.Line3D;
 import rajawali.renderer.RajawaliRenderer;
 
@@ -41,6 +46,7 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 	private ObjectColorPicker mPicker;
 	private HammerEnvironment auxEnv=null;
 	private boolean reload=false;
+	Context context;
 
 
 	public boolean isReload() {
@@ -59,6 +65,7 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 	public MyRajawaliRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
+		this.context=context;
 		
 	}
 	
@@ -241,41 +248,81 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 		
 	
 	
-	static public BaseObject3D createPiece(String name) throws Exception
+	public BaseObject3D createPiece(String name) 
 	{
 	
-		
-		
-		
+
+		File file;	
+		String path=Environment.getExternalStorageDirectory()
+                .getAbsolutePath()+MainActivity.applicationFolder+MyRajawaliRenderer.folder3D+name;
+		String ext;
+		BaseObject3D obj3D;
+		InputStream in;
+		ObjectInputStream ois;
 		try {
+			ext=".ser";
+			file=new File(path+ext);
+			if(file.exists())
+			{
 			
-			File file = new File(Environment.getExternalStorageDirectory()
-                .getAbsolutePath()+MainActivity.applicationFolder+MyRajawaliRenderer.folder3D+name+".ser");
-			InputStream in = new FileInputStream (file);
-			ObjectInputStream ois=new ObjectInputStream(in);
-			BaseObject3D obj3D=new BaseObject3D((SerializedObject3D)ois.readObject());
-			ois.close();
+				in = new FileInputStream (file);
 			
-			return obj3D;
+				ois=new ObjectInputStream(in);
+				obj3D=new BaseObject3D((SerializedObject3D)ois.readObject());
+				ois.close();
+				return obj3D;
 		
+			}
 		
-		} catch (FileNotFoundException e) {
+			ext=".obj";
+			file=new File(path+ext);
+			if(file.exists())
+			{
+
+				ObjParser parserOBJ=new ObjParser(this,file);
+				parserOBJ.parse();
+				obj3D=parserOBJ.getParsedObject();
+
+				return obj3D;	
+				
+			}
+		
+			ext=".3DS";
+			file=new File(path+ext);
+			if(file.exists())
+			{
+				Max3DSParser parser3DS=new Max3DSParser(this,file);
+			
+				parser3DS.parse();	parser3DS.build();
+				obj3D=parser3DS.getParsedObject();
+				return obj3D;
+			}
+		
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (StreamCorruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (OptionalDataException e) {
+			} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		return null;
+			
+			} catch (ParsingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TextureException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
 	}
 
 
+	
 
 	public AuxPiece getObjectSelected() {
 		return objectSelected;

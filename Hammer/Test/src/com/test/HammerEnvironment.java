@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import rajawali.renderer.RajawaliRenderer;
 import android.util.Xml;
 
 import com.test.AuxBasicVariables.TriplePoint;
@@ -20,11 +21,13 @@ public class HammerEnvironment {
 	private ArrayList<TriplePoint> points= new ArrayList<TriplePoint>();
 	private ArrayList<AuxPiece> pieces=new ArrayList<AuxPiece>();
 	private String name=new String();
+	public MyRajawaliRenderer renderer;
 
 	
 
 	public HammerEnvironment() {
 		super();
+		
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -78,7 +81,7 @@ public class HammerEnvironment {
 			    		  else if(parser.getName().compareTo("Piece")==0)
 			    		  {
 			    			  try {
-								piece=new AuxPiece(MyRajawaliRenderer.createPiece(parser.getAttributeValue(0)));
+								piece=new AuxPiece(renderer.createPiece(parser.getAttributeValue(0)));
 							} catch (Exception e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -167,7 +170,10 @@ public class HammerEnvironment {
 		return name;
 	}
 	
-	
+	public void setRenderer(MyRajawaliRenderer rend)
+	{
+		renderer=rend;
+	}
 	
 	
 	

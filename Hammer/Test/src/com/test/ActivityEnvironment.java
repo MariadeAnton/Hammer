@@ -127,6 +127,7 @@ class MyClickListener implements OnItemClickListener
 		
 		
 		environment=new HammerEnvironment();
+		environment.setRenderer(glSurface.getGlRajSurface());
 		itemSelected=xList.get(position);
 		
 		try {
