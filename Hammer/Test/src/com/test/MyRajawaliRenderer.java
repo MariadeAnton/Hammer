@@ -14,6 +14,7 @@ import java.util.Stack;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
@@ -23,13 +24,17 @@ import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.math.vector.Vector3;
 
 import rajawali.parser.AParser.ParsingException;
+import rajawali.parser.Loader3DSMax;
+import rajawali.parser.LoaderOBJ;
 import rajawali.parser.Max3DSParser;
 import rajawali.parser.ObjParser;
 import rajawali.primitives.Line3D;
 import rajawali.renderer.RajawaliRenderer;
 
+import rajawali.util.MeshExporter;
 import rajawali.util.ObjectColorPicker;
 import rajawali.util.OnObjectPickedListener;
+import rajawali.util.exporter.SerializationExporter;
 
 import android.content.Context;
 import android.os.Environment;
@@ -151,7 +156,7 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 
 
 	@Override
-	public void onObjectPicked(BaseObject3D object) {
+	public void onObjectPicked(Object3D object) {
 		
 	
 		
@@ -218,19 +223,19 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 			
 			aux.setPath(piece.getPath());
 			aux.setName(piece.getName());
-			DiffuseMaterial material = new DiffuseMaterial();
-			material.setUseSingleColor(true);
+		//	DiffuseMaterial material = new DiffuseMaterial();
+		//	material.setUseSingleColor(true);
 			
 			//Texture texture=new Texture(R.drawable.logo);
 	
 		
 			//material.addTexture(texture);
 
-			aux.getModel3D().setMaterial(material);
+		//	aux.getModel3D().setMaterial(material);
 			aux.getModel3D().addLight(mLight);
 			aux.getModel3D().setPosition((float)aux.getPositionXYZ().x,(float)aux.getPositionXYZ().y
 					,(float)aux.getPositionXYZ().z);	
-				
+			aux.getModel3D().setScale(1f);
 			addChild(aux.getModel3D());
 			 
 			mPicker.registerObject(aux.getModel3D());
@@ -248,7 +253,7 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 		
 	
 	
-	public BaseObject3D createPiece(String name) 
+	public Object3D createPiece(String name) 
 	{
 	
 
@@ -256,7 +261,7 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 		String path=Environment.getExternalStorageDirectory()
                 .getAbsolutePath()+MainActivity.applicationFolder+MyRajawaliRenderer.folder3D+name;
 		String ext;
-		BaseObject3D obj3D;
+		Object3D obj3D;
 		InputStream in;
 		ObjectInputStream ois;
 		try {
@@ -268,7 +273,7 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 				in = new FileInputStream (file);
 			
 				ois=new ObjectInputStream(in);
-				obj3D=new BaseObject3D((SerializedObject3D)ois.readObject());
+				obj3D=new Object3D((SerializedObject3D)ois.readObject());
 				ois.close();
 				return obj3D;
 		
@@ -279,10 +284,12 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 			if(file.exists())
 			{
 
-				ObjParser parserOBJ=new ObjParser(this,file);
+				LoaderOBJ parserOBJ=new LoaderOBJ(this,file);
 				parserOBJ.parse();
 				obj3D=parserOBJ.getParsedObject();
-
+				MeshExporter exporter=new MeshExporter(obj3D);
+				exporter.export("my3d",SerializationExporter.class);
+				
 				return obj3D;	
 				
 			}
@@ -291,7 +298,7 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 			file=new File(path+ext);
 			if(file.exists())
 			{
-				Max3DSParser parser3DS=new Max3DSParser(this,file);
+				Loader3DSMax parser3DS=new Loader3DSMax (this,file);
 			
 				parser3DS.parse();	parser3DS.build();
 				obj3D=parser3DS.getParsedObject();
@@ -309,11 +316,7 @@ public class MyRajawaliRenderer extends RajawaliRenderer implements OnObjectPick
 			e.printStackTrace();
 			} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-			} catch (ParsingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			e.printStackTrace(); 
 			} catch (TextureException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

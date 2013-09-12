@@ -2,7 +2,7 @@ package com.test;
 
 import java.util.ArrayList;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 
 import com.test.AuxBasicVariables.TriplePoint;
 
@@ -14,8 +14,8 @@ public class AuxPiece  {
 
 	
 		
-		private BaseObject3D obj3D=null;
-		private String name;
+		private Object3D obj3D=null;
+		private String name="No Name";
 		private TriplePoint positionXYZ=AuxBasicVariables.createTriplePoint(0,0,0);
 		private ArrayList<TriplePoint> path=new ArrayList<TriplePoint>();
 		boolean touched=false;
@@ -27,7 +27,7 @@ public class AuxPiece  {
 			
 		}
 		
-		public AuxPiece(BaseObject3D obj3d) {
+		public AuxPiece(Object3D obj3d) {
 			
 			super();
 			obj3D = obj3d;
@@ -40,10 +40,10 @@ public class AuxPiece  {
 			path=piece.getPath();
 			touched=piece.isTouched();
 		}
-		public BaseObject3D getModel3D() {
+		public Object3D getModel3D() {
 			return obj3D;
 		}
-		public void setModel3D(BaseObject3D o) {
+		public void setModel3D(Object3D o) {
 			obj3D = o;
 		}
 		public ArrayList<TriplePoint> getPath() {

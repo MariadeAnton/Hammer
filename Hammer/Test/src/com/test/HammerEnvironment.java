@@ -174,6 +174,18 @@ public class HammerEnvironment {
 	{
 		renderer=rend;
 	}
+
+	public void setPoints(ArrayList<TriplePoint> points) {
+		this.points = points;
+	}
+
+	public void setPieces(ArrayList<AuxPiece> pieces) {
+		this.pieces = pieces;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	
 	

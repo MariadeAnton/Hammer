@@ -1,20 +1,17 @@
 package com.test;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-
-import org.xmlpull.v1.XmlPullParserException;
-
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 
 public class ActivityLoader extends Activity {
 
@@ -27,6 +24,7 @@ public class ActivityLoader extends Activity {
 	private ListItem itemSelected;
 	private FragmentManager fragmentManager;
 	HammerEnvironment environment=null;
+	Context context;
 	@Override
 	
 	
@@ -36,7 +34,7 @@ public class ActivityLoader extends Activity {
 		setContentView(R.layout.model3d_loader);
 		setTitle("Load 3d Objects");
 		fragmentManager = getFragmentManager();
-
+		context=this;
 		glRajawaliFragment=(MyRajawaliFragment)fragmentManager.findFragmentById(R.id.loaderfrag);
 		
 		
@@ -79,25 +77,20 @@ public class ActivityLoader extends Activity {
 			
 			environment=new HammerEnvironment();
 			itemSelected=itemList3D.get(position);
+			String nam=itemList3D.get(position).getName().substring(0,itemList3D.get(position).getName().length()-4);
 			
-			try {
-				
-				environment.readXMLEnvironment(Environment.getExternalStorageDirectory()+MainActivity.applicationFolder
-						+loaderFolder+itemSelected.getName());
-				
-				
-				glRajawaliFragment.reLoad(environment);
-				
-				
+			ArrayList<AuxPiece>pieces=new ArrayList<AuxPiece>();
+			AuxPiece piece=new AuxPiece();
+			piece.setModel3D(glRajawaliFragment.getGlRajSurface().createPiece(nam));
+			piece.setName(nam);
+			pieces.add(piece);
+			
+			environment.setPieces(pieces);
+			environment.setRenderer(glRajawaliFragment.getGlRajSurface());
 
-				} catch (XmlPullParserException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				}
 			
+			glRajawaliFragment.reLoad(environment);
+			glRajawaliFragment.setListPath(new ListView(context));
 			
 		
 		
