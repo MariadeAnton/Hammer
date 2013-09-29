@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/lightbackground"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginRight="300dp"
+        android:layout_marginTop="50dp"
+        android:layout_weight="3"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/fileName"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/m_blackpearl"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="IP Address"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/confAddress"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="@drawable/m_blue"
+            android:ems="10"
+            android:gravity="center_vertical|center_horizontal"
+            android:inputType="phone"
+            android:textColorHint="#008A00" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginRight="300dp"
+        android:layout_weight="3"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/fileFolder"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/m_blackpearl"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Port"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/confPort"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="@drawable/m_blue"
+            android:ems="10"
+            android:gravity="center_horizontal|center_vertical"
+            android:inputType="number"
+            android:textColorHint="#008A00" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/confC"
+            style="@style/btnStyleBlackpearl"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/b_blackpearl"
+            android:onClick="Modify"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/confA"
+            style="@style/btnStyleBlackpearl"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/b_blackpearl"
+            android:gravity="center_horizontal|center_vertical"
+            android:onClick="Modify"
+            android:text="Accept" />
+
+    </LinearLayout>
+
+</LinearLayout>

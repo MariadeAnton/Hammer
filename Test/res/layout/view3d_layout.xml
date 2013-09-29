@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout 
+        android:id="@+id/linear0001"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tittle3d"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/m_red"
+        android:gravity="center"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6" >
+
+        <com.test.My3DView
+            android:id="@+id/myView3D"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="5" />
+
+        <com.test.MyOrientableSeekBar
+            android:id="@+id/rotateX"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <com.test.MyHorizontalSeekBar
+        android:id="@+id/rotateY"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/tittlelay"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/paths"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4" />
+
+            <ImageButton
+                android:id="@+id/defCam"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:onClick="defaultCamPos"
+                android:src="@drawable/defaultcam"
+                android:text="Button" />
+
+            <ImageButton
+                android:id="@+id/camParam"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:onClick="showCamSliders"
+                android:src="@drawable/cam"
+                android:text="Button" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/pathName"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6" />
+
+    </LinearLayout>
+
+</FrameLayout>
