@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/lightbackground"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/loadEnv"
+            style="@style/btnStyleBlackpearl"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:onClick="loadProgram"
+            android:text="Load Environment" />
+
+        <TextView
+            android:id="@+id/dialogText"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#111111"
+            android:gravity="center"
+            android:text="XML Files"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#FFFFFF" />
+
+        <ListView
+            android:id="@+id/listEnv"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:background="@drawable/m_grey" >
+
+        </ListView>
+    </LinearLayout>
+    
+    <com.test.WindowEnvironment 
+         android:id="@+id/envWindow"
+         android:layout_width="0dp"
+   		 android:layout_height="match_parent"
+   		 android:layout_weight="2"
+   		 android:layout_margin="5dp"
+    	 android:orientation="horizontal"></com.test.WindowEnvironment>
+
+</LinearLayout><!-- From: file:/C:/Users/Carlos/Dropbox/Hammer/Test/res/layout/environment.xml -->

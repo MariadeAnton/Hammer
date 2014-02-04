@@ -2,14 +2,17 @@ package com.test;
 
 
 
+import java.util.ArrayList;
+
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
-import android.graphics.Path;
 import android.graphics.Shader;
 import android.graphics.Typeface;
+import android.view.Gravity;
+import android.widget.Toast;
 
 import com.threed.jpct.SimpleVector;
 
@@ -33,6 +36,16 @@ public class ButtonRobot extends ButtonLinkAddable {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
+	public ButtonRobot(PositionableObject obj) {
+		super(obj);
+		ButtonRobot rob=(ButtonRobot)obj;
+		complement=rob.complement;
+	}
+
+
+
 	public ButtonRobot(int width,int height) {
 		super(width,height);
 		
@@ -47,15 +60,15 @@ public class ButtonRobot extends ButtonLinkAddable {
 		switch(type)
 		{
 		case INIT_POSE:
-			client.sendInitPos(point,parameter.getValue());
+			client.sendInitPos(point,parameter);
 			INITIAL.x=point.x;
 			INITIAL.y=point.y;
 			INITIAL.z=point.z;
-			SPEED=parameter.getValue();
+			SPEED=parameter;
 			break;
 		case DEBURRING:
-			/*
-			AuxPiece piece=((ActivityScratch)activity).getGlSurface3D().getGlRajSurface().getObjectSelected();
+			
+			AuxPiece piece=((ActivityScratching)activity).getWindow3D().getView3D().getRenderer().getObjectSelected();
 			if(piece==null)
 			{
 				Runnable message=new Runnable(){
@@ -72,19 +85,19 @@ public class ButtonRobot extends ButtonLinkAddable {
 				client.getHandler().post(message);
 				return false;
 			}
-			*
-			ArrayList<TriplePoint> pathPiece=piece.getPath();
+			
+			ArrayList<Point3D> pathPiece=piece.getPaths().get(0).getPathPoints();
 			
 			double depth=complement.getVariableValue();
 		
 			client.sendPosition(0,0,depth, 0, 0, 0);
 			for(int i=0;i<pathPiece.size();i++)
-				client.sendInitPos(pathPiece.get(i),parameter.getValue());
+				//client.sendInitPos(pathPiece.get(i).getTranslation(),parameter);
 			
 			client.sendInitPos(INITIAL,SPEED);	
 			
 			
-			*/
+			
 			break;
 		}
 		
@@ -111,7 +124,8 @@ public class ButtonRobot extends ButtonLinkAddable {
 
 	protected void drawBackground(Canvas c)
 	{	
-		path=new Path();
+		path.reset();
+		
 		paint.setStyle(Style.FILL);
 		paint.setShader(new LinearGradient(0, 0, getWidth(),0,colorD,colorL,  Shader.TileMode.MIRROR));
 		   
@@ -165,13 +179,14 @@ public class ButtonRobot extends ButtonLinkAddable {
 		paint.setTextAlign(Align.LEFT);
 		paint.setTextSize(getHeight()/3.5f);
 		
-		if(getActivity()instanceof ActivityScratch)
+		if(getActivity()instanceof ActivityScratching)
 		{
-		/*	if(type==DEBURRING &&((ActivityScratch)getActivity()).getGlSurface3D().getGlRajSurface().getObjectSelected()!=null && complement!=null)
+			if(type==DEBURRING &&((ActivityScratching)getActivity()).getWindow3D().getView3D().getRenderer().getObjectSelected()!=null && complement!=null)
 				paint.setColor(Color.GREEN);
 			else if(type==DEBURRING)
 				paint.setColor(Color.RED);
-		*/}
+		}
+	
 		c.drawText(getName(),posX-getWidth()/2+8,posY-(paint.descent()+paint.ascent())/2-getHeight()/8, paint);
 		
 	
@@ -234,8 +249,9 @@ public class ButtonRobot extends ButtonLinkAddable {
 			paint.setColor(Color.BLACK);	
 			paint.setStrokeWidth(4.0f);
 			c.drawCircle(posX+3.2f*getWidth()/2, posY,getHeight()/2-getHeight()/6, paint);
+			paint.setStyle(Style.FILL);
 			paint.setStrokeWidth(2.0f);
-			c.drawText(String.valueOf(parameter.getValue()),posX+3.2f*getWidth()/2,
+			c.drawText(String.valueOf(parameter),posX+3.2f*getWidth()/2,
 					posY-(paint.descent()+paint.ascent())/2,paint);
 			
 		}
@@ -247,13 +263,10 @@ public class ButtonRobot extends ButtonLinkAddable {
          if(type==INIT_POSE)
          {
         
-         MyTouchableLayout inpose=(MyTouchableLayout)activity.findViewById(R.id.initPosParam);
-         inpose.setIntercept(false);
-         inpose.setPoint(point);
         
-         inpose.setParameter(parameter);
-         ((ActivityScratch)getActivity()).showButtonParameters(inpose);
-         modificate=true;
+   
+        	 ((ActivityScratching) activity).showButtonLayout(new FragmentInitialPos(this),this);
+     		 modificate=true;
          }
          
 	}
@@ -283,6 +296,14 @@ public class ButtonRobot extends ButtonLinkAddable {
 
 	public void setPoint(SimpleVector point) {
 		this.point = point;
+	}
+
+
+
+	@Override
+	public PositionableObject copyFields(PositionableObject obj) {
+		// TODO Auto-generated method stub
+		return new ButtonRobot(obj);
 	}
 
 

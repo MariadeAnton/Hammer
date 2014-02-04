@@ -26,7 +26,7 @@ public class ActivityConfig extends Activity {
 		port.setHint(Integer.toString(GeneralParameters.getPort()));
 		accept=(Button)findViewById(R.id.confA);
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-	
+		
 	}
 	
 	

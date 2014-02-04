@@ -2,9 +2,9 @@ package com.test;
 
 public  class GeneralParameters {
 	
-	static String ip="192.168.2.6";
+	static String ip="192.168.1.130";
 	static int port=2344;
-	static HammerEnvironment environment=null;
+	static HammerEnvironment environment=new HammerEnvironment();
 	
 	
 	

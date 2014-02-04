@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+         <item>
+        <shape>
+            <gradient 
+                android:angle="0"
+                android:startColor="#AC193D"
+                android:endColor="#BF1E4B"
+                android:type="linear"
+         	/>
+        </shape>     
+    </item>
+    
+
+</selector>
+<!-- From: file:/C:/Users/Carlos/Dropbox/Hammer/Test/res/drawable/m_red.xml -->

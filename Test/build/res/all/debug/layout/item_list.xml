@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dispatcher"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal"
+    
+    > 
+   
+    <ImageView
+        android:id="@+id/fileImage"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_gravity="fill"
+        android:layout_weight="1"
+        android:scaleType="center"
+        android:src="@drawable/hammerfile" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="2"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/fileName"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="right|top"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/fileFolder"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="right|fill"
+            android:layout_weight="1"
+            android:gravity="right|bottom"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    </LinearLayout>
+
+</LinearLayout>
+<!-- From: file:/C:/Users/Carlos/Dropbox/Hammer/Test/res/layout/item_list.xml -->

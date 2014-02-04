@@ -21,7 +21,7 @@ public class ActivityLoader extends Activity {
 	private ArrayList<ListItem> itemList3D;
 	private AdapterItems adapter3D;
 	private My3DView view3D;
-	private ListItem itemSelected;
+	
 
 	HammerEnvironment environment=null;
 	Context context;
@@ -82,15 +82,14 @@ public class ActivityLoader extends Activity {
 			
 			
 			environment=new HammerEnvironment();
-			itemSelected=itemList3D.get(position);
 			String nam=itemList3D.get(position).getName().substring(0,itemList3D.get(position).getName().length()-4);
 			
 			ArrayList<AuxPiece>pieces=new ArrayList<AuxPiece>();
-			AuxPiece piece=new AuxPiece(view3D.loadModel(nam,1));
+			AuxPiece piece=new AuxPiece(My3DView.loadModel(nam,1));
 			piece.setName(nam);
 			pieces.add(piece);
 			environment.setPieces(pieces);
-			view3D.loadEnvironment(environment);
+			view3D.getRenderer().loadEnvironment(environment);
 		//	environment.setRenderer(glRajawaliFragment.getGlRajSurface());
 
 			

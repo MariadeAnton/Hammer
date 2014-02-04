@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
-import android.graphics.Path;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 
@@ -22,6 +21,12 @@ public class ButtonMovement extends ButtonLinkAddable{
 	private int colorL=Color.parseColor("#CEA539");
 
 	
+	
+	public ButtonMovement(PositionableObject obj) {
+		super(obj);
+		// TODO Auto-generated constructor stub
+	}
+
 	public  ButtonMovement()
 	{
 		super();
@@ -38,7 +43,7 @@ public class ButtonMovement extends ButtonLinkAddable{
 	public boolean execute(Client client) {
 		
 		
-		double i=parameter.getValue();
+		double i=parameter;
 		
 		
 		
@@ -94,7 +99,7 @@ public class ButtonMovement extends ButtonLinkAddable{
 	protected  void drawBackground(Canvas c)
 	{	
 		
-		path=new Path();
+		path.reset();
 		
 		paint.setStyle(Style.FILL);
 		paint.setShader(new LinearGradient(0, 0, getWidth(),0,colorD,colorL,  Shader.TileMode.MIRROR));
@@ -145,7 +150,7 @@ public class ButtonMovement extends ButtonLinkAddable{
 		paint.setTextSize(getHeight()/4f);	
 		
 		paint.setTextAlign(Align.CENTER);
-		c.drawText(String.valueOf(parameter.getValue()),posX+getWidth()/2,
+		c.drawText(String.valueOf(parameter),posX+getWidth()/2,
 				posY-(paint.descent()+paint.ascent())/2,paint);
 		
 		
@@ -154,15 +159,18 @@ public class ButtonMovement extends ButtonLinkAddable{
 public void showParametersLayout() {
 		
 		
-		MyTouchableLayout touchLay;
+		
 
-		touchLay=(MyTouchableLayout)activity.findViewById(R.id.valueLay);
-		touchLay.setIntercept(false);
-		touchLay.setParameter(parameter);
-
-		((ActivityScratch)getActivity()).showButtonParameters(touchLay);
-		modificate=true;
+		((ActivityScratching) activity).showButtonLayout(new FragmentParameter(this),this);
+		
+		
 	}
+
+@Override
+public PositionableObject copyFields(PositionableObject obj) {
+	// TODO Auto-generated method stub
+	return new ButtonMovement(obj);
+}
 
 
 	

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+   
+     <item>
+        <shape>
+            <gradient 
+                android:angle="-90"
+                 android:startColor="#FF9F00" 
+                 android:endColor="#FFA102" 
+              
+                android:type="linear"
+         	/>
+        </shape>     
+    </item>
+    	
+
+</selector>
+
+ <!--
+               android:startColor="#C69408"
+ 				android:endColor="#CEA539"
+ 				-->
+<!-- From: file:/C:/Users/Carlos/Dropbox/Hammer/Test/res/drawable/m_yellow.xml -->

@@ -9,18 +9,21 @@ import java.util.ArrayList;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.test.AuxBasicVariables.Paths;
-import com.test.AuxBasicVariables.Point3D;
-import com.test.My3DView.OnSelectObject;
 import com.threed.jpct.Logger;
 
 
@@ -36,54 +39,35 @@ public class ActivityEnvironment extends Activity {
 	
 	private ListView listXML;
 	private ArrayList<ListItem> xList;
-	private ArrayList<Point3D>pList;
-	private ArrayList<Paths>pathList;
 	private AdapterItems adapterXML;
-	private Window3D window3D; 
-	private WindowList listPoints,listPath;
-	private AuxAdapterPoints adapterPoints;
-	private AuxAdapterPath adapterPath;
 	private ListItem itemSelected;
+	private WindowEnvironment envWindow;
 	private HammerEnvironment environment=null;
+	private ProgressDialog dialog;
+	
 	@Override
 	
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.environment);
 		setTitle("Create Environment");
-		window3D=(Window3D) findViewById(R.id.window3D);
-		window3D.setTittle("Environment");
 		listXML=(ListView)findViewById(R.id.listEnv);
-		listPoints=(WindowList)findViewById(R.id.listEnvPoints);
-		listPath=(WindowList)findViewById(R.id.listPartPoints);
-		listPath.setMode(WindowList.MODE_PATH);
-		listPath.setTittle("Part's Paths");
+		
 		
 		xList=new ArrayList<ListItem>();
 		adapterXML=new AdapterItems(this,xList);
-	
-		pList=new ArrayList<Point3D>();
-		adapterPoints=new AuxAdapterPoints(this,pList);
-		pathList=new ArrayList<Paths>();
-		adapterPath=new AuxAdapterPath(this,pathList);
-		
+		envWindow=(WindowEnvironment)findViewById(R.id.envWindow);
+		envWindow.onCreate(this, (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE));
 		listXML.setAdapter(adapterXML);
 		listXML.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		listXML.setOnItemClickListener(new MyClickListener());
 		listXML.setSelector(R.drawable.bg_key);
 	
 		
-		listPoints.getListPath().setAdapter(adapterPoints);
-		listPoints.getListPath().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-		listPoints.getListPath().setOnItemClickListener(new MyEnvironmentPointsListener());
 		
-		listPath.getListPath().setAdapter(adapterPath);
-		listPath.getListPath().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-		listPath.getListPath().setOnItemClickListener(new MyPathPointsListener());
-		
-		window3D.getView3D().setOnSelectionListener(new MyTouch3DObject());
 		
 	
 	File yourDir =new File( Environment.getExternalStorageDirectory()+MainActivity.applicationFolder+environmentFolder);
@@ -93,7 +77,8 @@ public class ActivityEnvironment extends Activity {
 			xList.add(new ListItem(getResources().getDrawable(R.drawable.xmlfile),f.getName(),yourDir.getAbsolutePath()));
 
 	adapterXML.notifyDataSetChanged();
-
+	dialog=new ProgressDialog(this);
+	
 }
 	
 	
@@ -136,140 +121,157 @@ public class ActivityEnvironment extends Activity {
 		}
 	}
 
-class MyClickListener implements OnItemClickListener
+private class MyClickListener implements OnItemClickListener
 {
 
 	@Override
 	public void onItemClick(AdapterView<?> it, View view, int position,long arg3) {
 		
-		
-		environment=new HammerEnvironment();
-		environment.setRenderer(window3D.getView3D());
+	
 		itemSelected=xList.get(position);
-		
-		try {
-			
-			environment.readXMLEnvironment(Environment.getExternalStorageDirectory()+MainActivity.applicationFolder
-					+environmentFolder+itemSelected.getName());
-			
-			window3D.getView3D().loadEnvironment(environment);
-			pList.removeAll(pList);
-			pList.addAll(environment.getPoints());
-			listPoints.setTittle(environment.getName());
-			adapterPoints.notifyDataSetChanged();
-			
+		environment=new HammerEnvironment();
+		MyAsyncTask loadEnvironment=new MyAsyncTask();
+		loadEnvironment.execute(Environment.getExternalStorageDirectory()
+	            .getAbsolutePath()+MainActivity.applicationFolder+ActivityEnvironment.environmentFolder+itemSelected.getName());
+		//envWindow.getWindow3D().setTittle(environment.getName());
 
-			} catch (XmlPullParserException e) {
+	}
+	
+		
+}
+interface Update{
+		public void updateLoading(int i, int length,int total);
+	}
+
+class MyAsyncTask extends AsyncTask<String,Integer,Boolean> 
+
+{
+	
+	@Override
+	protected Boolean doInBackground(String... params) {
+
+
+		
+			
+		environment.setUpdate(new Update(){
+				@Override
+				public void updateLoading(int i,int percent,int total) {
+					if(isCancelled())
+							environment.cancelReading();
+					publishProgress(i,percent,total);
+					
+					}});
+		
+	
+		
+			
+		try {
+			environment.readXMLEnvironment(params[0]);
+		
+		} catch (XmlPullParserException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			} catch (IOException e) {
+		
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
 	
+		return true;
+	}
+	
+
+	
+	
+	/* (non-Javadoc)
+	 * @see android.os.AsyncTask#onCancelled()
+	 */
+	
+	
+	@Override
+	protected void onCancelled() {
+		
+		cancel(true);
+		Toast toast=Toast.makeText(dialog.getContext(), "Environment loading cancelled!",Toast.LENGTH_SHORT);
+		toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+		toast.show();
 	
 	}
 	
-		
-}
 
-class MyEnvironmentPointsListener implements OnItemClickListener
-{
 
 	@Override
-	public void onItemClick(AdapterView<?> list, View view, int position,
-			long arg3) {
-	
-			AuxAdapterPoints adaptPoints=(AuxAdapterPoints)list.getAdapter();
-			Point3D pointSelected=(Point3D)adaptPoints.getItem(position);
-			pointSelected.setSelected(!pointSelected.isSelected());
-			
-			if(pointSelected.isSelected())
-			{
-				view.setBackgroundColor(R.drawable.m_skyblue);
-				window3D.getView3D().getRenderer().addPoint(pointSelected);
-			}
-			else 
-			{
-				view.setBackgroundResource(android.R.color.transparent);
-				window3D.getView3D().getRenderer().deletePoint(pointSelected);
-			}
-			
-			
-			
-		
+	protected void onCancelled(Boolean result) {
+		cancel(true);
+		Toast toast=Toast.makeText(dialog.getContext(), "Environment loading cancelled!",Toast.LENGTH_SHORT);
+		toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+		toast.show();
 	}
-	
-}
 
 
 
-class MyPathPointsListener implements OnItemClickListener
-{
 
 	@Override
-	public void onItemClick(AdapterView<?> list, View view, int position,
-			long arg3) {
-	
-			AuxAdapterPath adaptPath=(AuxAdapterPath)list.getAdapter();
-			Paths pathSelected=(Paths)adaptPath.getItem(position);
-			pathSelected.setSelected(!pathSelected.isSelected());
-			
-			if(pathSelected.isSelected())
+	protected void onPostExecute(Boolean result) {
+		// TODO Auto-generated method stub
+		if(result)
 			{
-				view.setBackgroundColor(R.drawable.m_skyblue);
-			//	window3D.getView3D().getRenderer().addPath(pathSelected);
-				pList.removeAll(pList);
-				pList.addAll(pathSelected.getPathPoints());
-				listPoints.setTittle(pathSelected.getName());
-				adapterPoints.notifyDataSetChanged();
+				 
+				envWindow.getWindow3D().getView3D().getRenderer().loadEnvironment(environment);
+				envWindow.getpList().removeAll(	envWindow.getpList());
+				envWindow.getpList().addAll(environment.getPoints());
+				envWindow.getListPoints().setTittle(environment.getName());
+			
+				envWindow.setEnvironment(environment);
+				envWindow.getWindow3D().setTittle(environment.getName());
+				dialog.dismiss(); 
 				
 			}
-			else 
-			{
-				view.setBackgroundResource(android.R.color.transparent);
-			//	window3D.getView3D().getRenderer().deletePath(pathSelected);
-				pList.removeAll(pList);
-				pList.addAll(environment.getPoints());
-				listPoints.setTittle(environment.getName()+" Points");
-				adapterPoints.notifyDataSetChanged();
-			}
-			
-			
-			
+     
+	}
+
+	/* (non-Javadoc)
+	 * @see android.os.AsyncTask#onPreExecute()
+	 */
+	protected void onPreExecute() {
+		
+		   dialog.setOnCancelListener(new OnCancelListener() {
+	            @Override
+	            public void onCancel(DialogInterface dialog) {
+	                MyAsyncTask.this.cancel(true);
+	            }
+	        });
+	 ////////////Obligatorio ponerlo el message antes del style que si no luego no aparece/////////////
+		   		dialog.setMessage("Loading Objects");
+		   		dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		   		dialog.setCancelable(true);
+		   		dialog.setMax(100);
+	            dialog.setProgress(0);
+	            dialog.show();
+	 }
+	
+
+	/* (non-Javadoc)
+	 * @see android.os.AsyncTask#onProgressUpdate(Progress[])
+	 */
+	@Override
+	protected void onProgressUpdate(Integer... values) {
+		
+		int progress=values[0].intValue();
+		int percent=values[1].intValue();
+		int total=values[2].intValue();
+		dialog.setMessage("Processing and loading objects to scene: "+progress+"/"+total);
+		dialog.setProgress(percent);
 		
 	}
-	
-	
-	}
-	
-class MyTouch3DObject implements OnSelectObject
-	{
 
-		@Override
-		public void selectObject(AuxPiece objectSelected) {
-			
-			pathList.removeAll(pathList);
-			pathList.addAll(objectSelected.getPaths());
-			adapterPath.notifyDataSetChanged();
-			listPath.setTittle(objectSelected.getName()+" Paths");
-			
-		}
 
-		@Override
-		public void deselectObject() {
-			pathList.removeAll(pathList);
-			pList.removeAll(pList);
-			pList.addAll(environment.getPoints());
-			adapterPoints.notifyDataSetChanged();
-			adapterPath.notifyDataSetChanged();
-			listPath.setTittle("Part's Paths");
-			listPoints.setTittle(environment.getName()+" Points");
-			
-		}
-		
-	}
+	
+	
+	
+	
+	
+}
 	
 }

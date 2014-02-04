@@ -13,6 +13,14 @@ public class ButtonLinkAddable extends PositionableObject {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	
+	
+	
+	public ButtonLinkAddable(PositionableObject obj) {
+		super(obj);
+		
+	}
+
 	public ButtonLinkAddable() {
 		super();// TODO Auto-generated constructor stub
 	}
@@ -244,6 +252,14 @@ public class ButtonLinkAddable extends PositionableObject {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public PositionableObject copyFields(PositionableObject obj) {
+		// TODO Auto-generated method stub
+		 return null;
+	}
+
+	
 
 
 }

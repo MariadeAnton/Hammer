@@ -12,8 +12,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 
-import com.test.AuxBasicVariables.DoubleValue;
-
 
 public abstract class PositionableObject implements LinkableSchemaObject, ObjectExecutable,Serializable
 {
@@ -47,14 +45,33 @@ public abstract class PositionableObject implements LinkableSchemaObject, Object
 	protected ButtonControl auxOwner;
 	protected boolean linkable=false;
 	protected boolean addable=false;
-	protected DoubleValue parameter=AuxBasicVariables.createDoubleValue(1);
+	protected double parameter=1.0f;
 	
 	protected abstract void onDraw(Canvas c);
 	protected abstract void drawBackground(Canvas c);
 	protected abstract void drawBorders(Canvas c);
 	protected abstract void drawText(Canvas c);
 	public abstract void showParametersLayout();
-
+	
+	public  PositionableObject(PositionableObject obj) {
+		
+		posX=obj.posX;
+		posY=obj.posY;
+		width=obj.width;
+		type=obj.width;
+		name=obj.name;
+		modBitmap=obj.modBitmap;
+		activity=obj.activity;
+		//erasable=obj.erasable;
+		//modificate=obj.modificate;
+		basic=obj.basic;
+		parent=obj.parent;
+		child=obj.child;
+		//auxParent=obj.auxParent;
+		//auxChild=obj.auxChild;
+		owner=obj.owner;
+		parameter=obj.parameter;
+	}
 
 
 	public PositionableObject() {
@@ -296,13 +313,13 @@ public abstract class PositionableObject implements LinkableSchemaObject, Object
 
 
 
-	public DoubleValue getParameter() {
+	public double getParameter() {
 		return parameter;
 	}
 
 
 
-	public void setParameter(DoubleValue parameter) {
+	public void setParameter(double parameter) {
 		this.parameter = parameter;
 	}
 	
@@ -348,8 +365,8 @@ public abstract class PositionableObject implements LinkableSchemaObject, Object
 
 
 
-	public void setActivity(Activity activity) {
-		this.activity = activity;
+	public void setActivity(Activity context) {
+		activity =  (Activity)context;
 	}
  
 	public void setModificate(boolean mod)
@@ -361,5 +378,8 @@ public abstract class PositionableObject implements LinkableSchemaObject, Object
 	{
 		return modificate;
 	}
+	
+	public abstract PositionableObject copyFields(PositionableObject obj);
+	
 	
 }

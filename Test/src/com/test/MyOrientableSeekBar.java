@@ -14,6 +14,7 @@ public class MyOrientableSeekBar extends SeekBar {
 	
     public MyOrientableSeekBar(Context context) {
         super(context);
+        
     }
 
     public MyOrientableSeekBar(Context context, AttributeSet attrs, int defStyle) {

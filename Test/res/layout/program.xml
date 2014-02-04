@@ -6,7 +6,7 @@
     android:orientation="horizontal" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
         android:layout_weight="1"
@@ -23,11 +23,12 @@
 
         <Button
             android:id="@+id/loadProgram"
-            style="@style/btnStyleBlackpearl"
+            style="@style/btnStyleBlackpearl"  
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:onClick="loadProgram"
+            android:background="@drawable/soi_5"
             android:text="Load Program" />
 
         <TextView
@@ -54,7 +55,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
         android:layout_weight="1"
@@ -115,191 +116,13 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/dispatcher"
-        android:layout_width="fill_parent"
+    <com.test.WindowEnvironment
+        android:id="@+id/envWindow"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
-        android:layout_weight="1"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-
-            
-              <com.test.Window3D
-                    android:id="@+id/window3D"
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="6" >
-                    
-                     </com.test.Window3D>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/infoEnvironment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:orientation="horizontal" >
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/number"
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/m_blue"
-                    android:gravity="center"
-                    android:text="Points"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/m_teal" >
-
-                    <TextView
-                        android:id="@+id/nameVar"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Point"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                    <TextView
-                        android:id="@+id/valueVar"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="X"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                    <TextView
-                        android:id="@+id/oper"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Y"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                    <TextView
-                        android:id="@+id/text001"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Z"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                </LinearLayout>
-
-                <ListView
-                    android:id="@+id/pointsLoaded"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="5"
-                    android:background="#AAF6F7" >
-                </ListView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/pathName"
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/m_blue"
-                    android:gravity="center"
-                    android:text="Part Path"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/m_teal" >
-
-                    <TextView
-                        android:id="@+id/inPos"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Point"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                    <TextView
-                        android:id="@+id/TextView03"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="X"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                    <TextView
-                        android:id="@+id/TextView02"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Y"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                    <TextView
-                        android:id="@+id/pathPoints"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Z"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                </LinearLayout>
-
-                <ListView
-                    android:id="@+id/pathLoaded"
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="5"
-                    android:background="#AAF6F7" >
-
-                </ListView>
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
-
+        android:layout_weight="1" >
+</com.test.WindowEnvironment>
+    
+    
 </LinearLayout>

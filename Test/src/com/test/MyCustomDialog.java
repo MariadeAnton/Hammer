@@ -4,6 +4,7 @@ import android.app.ActionBar.LayoutParams;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -28,10 +29,15 @@ public class MyCustomDialog extends Dialog {
  
         private Context context;
         private String title;
+        private Drawable tittleback;
         private String message;
         private String positiveButtonText;
+        private Drawable posback;
         private String negativeButtonText;
+        private Drawable negback;
         private View contentView;
+        private Drawable contentback;
+        private Drawable buttonback;
         private int icon;
  
         private DialogInterface.OnClickListener 
@@ -47,8 +53,9 @@ public class MyCustomDialog extends Dialog {
          * @param title
          * @return
          */
-        public Builder setMessage(String message) {
+        public Builder setMessage(String message, Drawable background) {
             this.message = message;
+            contentback=background;
             return this;
         }
  
@@ -57,8 +64,9 @@ public class MyCustomDialog extends Dialog {
          * @param title
          * @return
          */
-        public Builder setMessage(int message) {
+        public Builder setMessage(int message,Drawable background) {
             this.message = (String) context.getText(message);
+            contentback=background;
             return this;
         }
  
@@ -67,8 +75,9 @@ public class MyCustomDialog extends Dialog {
          * @param title
          * @return
          */
-        public Builder setTitle(int title) {
+        public Builder setTitle(int title,Drawable back) {
             this.title = (String) context.getText(title);
+            this.tittleback=back;
             return this;
         }
  
@@ -77,8 +86,10 @@ public class MyCustomDialog extends Dialog {
          * @param title
          * @return
          */
-        public Builder setTitle(String title) {
+        public Builder setTitle(String title,Drawable back) {
             this.title = title;
+            this.tittleback=back;
+            
             return this;
         }
  
@@ -89,8 +100,9 @@ public class MyCustomDialog extends Dialog {
          * @param v
          * @return
          */
-        public Builder setContentView(View v) {
+        public Builder setContentView(View v,Drawable background) {
             this.contentView = v;
+            this.contentView.setBackground(background);
             return this;
         }
         
@@ -105,10 +117,12 @@ public class MyCustomDialog extends Dialog {
          * @param listener
          * @return
          */
-        public Builder setPositiveButton(int positiveButtonText,
+        public Builder setPositiveButton(int positiveButtonText,Drawable buttonback,Drawable posback,
                 DialogInterface.OnClickListener listener) {
             this.positiveButtonText = (String) context
                     .getText(positiveButtonText);
+            this.buttonback=buttonback;
+            this.posback=posback;
             this.positiveButtonClickListener = listener;
             return this;
         }
@@ -119,9 +133,11 @@ public class MyCustomDialog extends Dialog {
          * @param listener
          * @return
          */
-        public Builder setPositiveButton(String positiveButtonText,
-                DialogInterface.OnClickListener listener) {
+        public Builder setPositiveButton(String positiveButtonText,Drawable buttonback,Drawable posback,
+                 DialogInterface.OnClickListener listener) {
             this.positiveButtonText = positiveButtonText;
+            this.buttonback=buttonback;
+            this.posback=posback;
             this.positiveButtonClickListener = listener;
             return this;
         }
@@ -132,10 +148,12 @@ public class MyCustomDialog extends Dialog {
          * @param listener
          * @return
          */
-        public Builder setNegativeButton(int negativeButtonText,
+        public Builder setNegativeButton(int negativeButtonText,Drawable buttonback,Drawable negback,
                 DialogInterface.OnClickListener listener) {
             this.negativeButtonText = (String) context
                     .getText(negativeButtonText);
+            this.buttonback=buttonback;
+            this.negback=negback;
             this.negativeButtonClickListener = listener;
             return this;
         }
@@ -146,9 +164,12 @@ public class MyCustomDialog extends Dialog {
          * @param listener
          * @return
          */
-        public Builder setNegativeButton(String negativeButtonText,
+        public Builder setNegativeButton(String negativeButtonText,Drawable buttonback,Drawable negback,
+                
                 DialogInterface.OnClickListener listener) {
             this.negativeButtonText = negativeButtonText;
+            this.buttonback=buttonback;
+            this.negback=negback;
             this.negativeButtonClickListener = listener;
             return this;
         }
@@ -156,7 +177,7 @@ public class MyCustomDialog extends Dialog {
         /**
          * Create the custom dialog
          */
-        public MyCustomDialog create() {
+        public MyCustomDialog create(Drawable dialogback) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             // instantiate the dialog with the custom Theme
@@ -166,12 +187,17 @@ public class MyCustomDialog extends Dialog {
             dialog.addContentView(layout, new LayoutParams(
                     LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
             // set the dialog title
+            ((LinearLayout)layout.findViewById(R.id.dialoback)).setBackground(dialogback);
             ((TextView) layout.findViewById(R.id.title)).setText(title);
+            ((LinearLayout)layout.findViewById(R.id.tittleback)).setBackground(tittleback);   
             ((ImageView)layout.findViewById(R.id.icon)).setImageResource(icon);
             // set the confirm button
             if (positiveButtonText != null) {
-                ((Button) layout.findViewById(R.id.positiveButton))
-                        .setText(positiveButtonText);
+                Button pos=(Button)layout.findViewById(R.id.positiveButton);
+                       pos.setText(positiveButtonText);
+                       pos.setBackground(posback);
+                       ActivityRobot.changeCornersButtons(pos, 0, 0, 40, 0);
+                
                 if (positiveButtonClickListener != null) {
                     ((Button) layout.findViewById(R.id.positiveButton))
                             .setOnClickListener(new View.OnClickListener() {
@@ -189,8 +215,10 @@ public class MyCustomDialog extends Dialog {
             }
             // set the cancel button
             if (negativeButtonText != null) {
-                ((Button) layout.findViewById(R.id.negativeButton))
-                        .setText(negativeButtonText);
+            	Button neg=(Button)layout.findViewById(R.id.negativeButton);
+                	neg.setText(negativeButtonText);
+                	neg.setBackground(negback);
+                	ActivityRobot.changeCornersButtons(neg, 0, 0, 0, 40);
                 if (negativeButtonClickListener != null) {
                     ((Button) layout.findViewById(R.id.negativeButton))
                             .setOnClickListener(new View.OnClickListener() {
@@ -224,10 +252,15 @@ public class MyCustomDialog extends Dialog {
                                         LayoutParams.MATCH_PARENT, 
                                         LayoutParams.MATCH_PARENT));
             }
+            ((LinearLayout) layout.findViewById(R.id.buttonback)).setBackground(buttonback);
+            ((LinearLayout) layout.findViewById(R.id.content)).setBackground(contentback);
+            
             dialog.setContentView(layout);
             return dialog;
         }
  
     }
+    
+    
  
 }

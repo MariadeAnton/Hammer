@@ -16,17 +16,6 @@ public class AuxBasicVariables implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
-	static public Point3D createPoint3D()
-	{
-		AuxBasicVariables var = new AuxBasicVariables();
-		return  var.new Point3D();
-	}
-	
-	static public Point3D createPoint3D(SimpleVector pos)
-	{
-		AuxBasicVariables var = new AuxBasicVariables();
-		return  var.new Point3D(pos);
-	}
 	
 	static public Paths createPaths()
 	{
@@ -47,63 +36,6 @@ public class AuxBasicVariables implements Serializable{
 	}
 	
 	
-	class Point3D extends Object3D implements Serializable
-	{
-		
-		private static final long serialVersionUID = 1L;
-		private boolean growing=true;
-		private boolean isSelected=false;
-		private float radius;
-		
-		
-		public Point3D() {
-			super(Primitives.getSphere(0.5f));
-			radius=0.5f;
-			
-		}
-		
-		
-		
-		public Point3D(SimpleVector pos) {
-			super(Primitives.getSphere(0.5f));
-			radius=0.5f;
-			this.setOrigin(pos);
-			
-		}
-
-
-		public boolean isSelected() {
-			return isSelected;
-		}
-
-
-		public void setSelected(boolean isSelected) {
-			this.isSelected = isSelected;
-		}
-
-
-		public boolean isGrowing() {
-			return growing;
-		}
-
-
-		public void setGrow(boolean grow) {
-			this.growing = grow;
-		}
-
-
-		public float getRadius() {
-			return getScale();
-		}
-
-
-		public void setRadius(float radius) {
-			this.radius = radius;
-			setScale(radius);
-		}
-		
-	}
-
 	class Paths
 	{
 		private String name;

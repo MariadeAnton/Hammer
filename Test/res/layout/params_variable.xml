@@ -55,6 +55,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/m_blue"
                 android:ems="10"
+                android:inputType="text"
                 android:gravity="center" />
 
         </LinearLayout>
@@ -105,7 +106,7 @@
         android:layout_weight="1.5" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/sust"
             style="@style/btnStyleBlackpearl"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
@@ -115,7 +116,7 @@
             android:text="Cancel" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/plus"
             style="@style/btnStyleBlackpearl"
             android:layout_width="0dp"
             android:layout_height="fill_parent"

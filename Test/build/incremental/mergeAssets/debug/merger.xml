@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="CarlosHephestosSlidingMenuMasterLibraryUnspecified.aar" >
+        <source path="C:\Users\Carlos\Dropbox\Hammer\Test\build\exploded-bundles\CarlosHephestosSlidingMenuMasterLibraryUnspecified.aar\assets" />
+    </dataSet>
+    <dataSet config="main" >
+        <source path="C:\Users\Carlos\Dropbox\Hammer\Test\assets" >
+            <file
+                name="Color.dat"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\Color.dat" />
+            <file
+                name="Color.xml"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\Color.xml" />
+            <file
+                name="Kand.dat"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\Kand.dat" />
+            <file
+                name="Kand.xml"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\Kand.xml" />
+            <file
+                name="StonesAndChips.dat"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\StonesAndChips.dat" />
+            <file
+                name="StonesAndChips.xml"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\StonesAndChips.xml" />
+            <file
+                name="Tarmac.dat"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\Tarmac.dat" />
+            <file
+                name="Tarmac.xml"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\Tarmac.xml" />
+            <file
+                name="TextureTeapotBlue.png"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\TextureTeapotBlue.png" />
+            <file
+                name="TextureTeapotBrass.png"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\TextureTeapotBrass.png" />
+            <file
+                name="TextureTeapotGreen.png"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\TextureTeapotGreen.png" />
+            <file
+                name="TextureTeapotRed.png"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\TextureTeapotRed.png" />
+            <file
+                name="TextureTeapotYellow.png"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\TextureTeapotYellow.png" />
+            <file
+                name="Triangle.dat"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\Triangle.dat" />
+            <file
+                name="Triangle.xml"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\Triangle.xml" />
+            <file
+                name="Wood.dat"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\Wood.dat" />
+            <file
+                name="Wood.xml"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\assets\Wood.xml" />
+        </source>
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\Users\Carlos\Dropbox\Hammer\Test\build-types\debug\assets" />
+    </dataSet>
+
+</merger>

@@ -7,14 +7,12 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
-import com.test.AuxBasicVariables.DoubleValue;
-import com.test.AuxBasicVariables.Point3D;
 import com.test.AuxBasicVariables.StringValue;
 import com.threed.jpct.SimpleVector;
 
 public class MyTouchableLayout extends FrameLayout implements Cloneable {
 
-	private DoubleValue parameter=null;
+	private double parameter;
 	private StringValue string,string2;
 	private SimpleVector point;
 	private String instance="";
@@ -35,7 +33,7 @@ public class MyTouchableLayout extends FrameLayout implements Cloneable {
 	{
 		this.name=name;
 		this.type=type;
-		this.parameter=AuxBasicVariables.createDoubleValue(parameter);
+		this.parameter=parameter;
 		this.instance=instance;
 		
 	}
@@ -63,13 +61,13 @@ public class MyTouchableLayout extends FrameLayout implements Cloneable {
 	}
 
 	
-	public DoubleValue getParameter() {
+	public double getParameter() {
 		return parameter;
 	}
 
 	
-	public void setParameter(DoubleValue value) {
-		this.parameter = value;
+	public void setParameter(double parameter2) {
+		this.parameter = parameter2;
 	}
 
 	public MyTouchableLayout(Context context, AttributeSet attrs, int defStyle) {

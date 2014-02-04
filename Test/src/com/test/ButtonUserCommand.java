@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
-import android.graphics.Path;
 import android.graphics.Path.Direction;
 import android.graphics.Shader;
 import android.graphics.Typeface;
@@ -21,23 +20,22 @@ public class ButtonUserCommand extends ButtonLinkAddable {
 
 	private int colorD=Color.parseColor("#AC193D");
 	private int colorL=Color.parseColor("#BF1E4B");
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	private static final long serialVersionUID = 1L;
 
 	public ButtonUserCommand() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public ButtonUserCommand(PositionableObject obj) {
+		super(obj);
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 	public ButtonUserCommand(int width, int height) {
 		super(width, height);
@@ -65,7 +63,7 @@ public class ButtonUserCommand extends ButtonLinkAddable {
 		
 		if(type==PRESS_EXECUTE)
 		{
-			path=new Path();
+			path.reset();
 			paint.setStyle(Style.FILL);
 			paint.setShader(new LinearGradient(0, 0, getWidth(),0,colorD,colorL,  Shader.TileMode.MIRROR));
 			 
@@ -89,7 +87,7 @@ public class ButtonUserCommand extends ButtonLinkAddable {
 		else
 		{
 	
-		path=new Path();
+		path.reset();
 		paint.setStyle(Style.FILL);
 		paint.setShader(new LinearGradient(0, 0, getWidth(),0,colorD,colorL,  Shader.TileMode.MIRROR));
 		 
@@ -181,7 +179,7 @@ public boolean execute(Client client) {
 		public void run() {
 				// TODO Auto-generated method stub
 		
-			
+			/*
 			MyCustomDialog.Builder customBuilder=new MyCustomDialog.Builder(activity);
 			customBuilder
 				.setIcon(R.drawable.info)
@@ -211,7 +209,7 @@ public boolean execute(Client client) {
 				});
 	     dialog = customBuilder.create();
 		 dialog.show();
-		 
+		 */
 		
 		  }
 
@@ -224,6 +222,12 @@ public boolean execute(Client client) {
 			return cont;
 		}
 		
+	}
+
+	@Override
+	public PositionableObject copyFields(PositionableObject obj) {
+		// TODO Auto-generated method stub
+		return new ButtonUserCommand(obj);
 	}
 	
 }

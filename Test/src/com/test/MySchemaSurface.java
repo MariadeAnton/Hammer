@@ -11,50 +11,64 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.support.v4.view.GestureDetectorCompat;
 import android.util.AttributeSet;
 import android.view.DragEvent;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
 
 
 
 
 
-public class MySchemaSurface extends MySurfaceView 
+public class MySchemaSurface extends View implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener
 {
 
 	
 	 
 	
-	
+	private boolean COPY_CANVAS;
 	float initpx=0,scaleX=1.0f;
 	float initpy=0,scaleY=1.0f;
 	private PositionableObject  bitmapSelected=null;
-	private ArrayList<PositionableObject > drawList=new ArrayList<PositionableObject >();
-	private ArrayList<PositionableObject > objectList=new ArrayList<PositionableObject >();
+	private ArrayList <PositionableObject> drawList=new ArrayList<PositionableObject >();
+	private ArrayList <PositionableObject> objectList=new ArrayList<PositionableObject >();
+	private Bitmap canvasLayout;
 	ArrayList<PositionableObject > reorderList=new ArrayList<PositionableObject >();
 	Bitmap cancel=BitmapFactory.decodeResource(getResources(), R.drawable.del);
+	protected GestureDetectorCompat gestureDetector;
+	protected Context context;
+	private Canvas canvas=new Canvas();
+	private boolean onPause=false;
+	protected boolean touchEnabled=true;
+	Thread t;
 	
 	public MySchemaSurface(Context context) {	
 		super(context);	
+	
 		
+		this.context=context;
+		gestureDetector=new GestureDetectorCompat(context,this);
 	}
 	
 	public MySchemaSurface(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		
-		
+		this.context=context;
+		gestureDetector=new GestureDetectorCompat(context,this);
+	
 	}
 	
 
 
-	
+	@Override
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
-	
-		
+		//if(COPY_CANVAS)canvas.setBitmap(canvasLayout);
 		canvas.drawRGB(255, 255, 255);
 		canvas.scale(scaleX,scaleY);
-		for(int i=0;i<drawList.size();i++)
+		int size=drawList.size();
+		for(int i=0;i<size;i++)
 			{
 				if(drawList.get(i).isErasable())
 					canvas.drawBitmap(drawList.get(i).getModBitmap(),drawList.get(i).getPosX()-drawList.get(i).getWidth()/2, drawList.get(i).getPosY()-drawList.get(i).getHeight()/2, null);
@@ -62,10 +76,9 @@ public class MySchemaSurface extends MySurfaceView
 					drawList.get(i).onDraw(canvas);
 			}
 			
-			
-	
+		
 	}
-			
+
 	
 	protected void addDropDraw(DragEvent event)
 	{
@@ -94,10 +107,12 @@ public class MySchemaSurface extends MySurfaceView
        	bm.setName(layout.getName()); 
     	bm.setPosX(event.getX());
     	bm.setPosY(event.getY());	
-    	bm.setActivity((Activity)context);
+    	bm.setActivity((ActivityScratching)context);
 		bm.setModBitmap(cancel);
 		objectList.add(bm);
 		drawList.add(bm);
+		
+		invalidate();
 		
 	}
 	
@@ -286,11 +301,12 @@ public class MySchemaSurface extends MySurfaceView
 						if(bitmapSelected.SetLink())
 							drawList.remove(bitmapSelected);			
 				}
+				
 				break;	
 				
 		}
-		
-		
+	
+		invalidate();
 	
 		return true;
 	}
@@ -451,6 +467,27 @@ public class MySchemaSurface extends MySurfaceView
 		return false;
 	}
 
-	
+	/**
+	 * @param drawList the drawList to set
+	 */
+	public void setDrawList(ArrayList<PositionableObject> list) {
+		for(PositionableObject obj:list) drawList.add(obj);
+	}
+
+	public boolean isOnPause() {
+		return onPause;
+	}
+
+	public void enableTouchEvent(boolean touchEnabled)
+	{
+		this.touchEnabled=touchEnabled;
+	}
+
+	/**
+	 * @return the objectList
+	 */
+	public ArrayList<PositionableObject> getObjectList() {
+		return objectList;
+	}
 
 }

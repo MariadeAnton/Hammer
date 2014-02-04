@@ -7,7 +7,7 @@
       android:orientation="vertical" >
                     
                     <TextView
-                        android:id="@+id/tittleList"
+                        android:id="@+id/tittle"
                         android:layout_width="fill_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -17,7 +17,7 @@
                         android:textAppearance="?android:attr/textAppearanceLarge" />
 
                     <LinearLayout
-                        android:id="@+id/tittlePoints"
+                        android:id="@+id/subtittle"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -26,7 +26,7 @@
                         <TextView
                             android:id="@+id/TextView06"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -36,7 +36,7 @@
                         <TextView
                             android:id="@+id/TextView13"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -46,7 +46,7 @@
                         <TextView
                             android:id="@+id/TextView09"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="fill_parent"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -56,7 +56,7 @@
                         <TextView
                             android:id="@+id/TextView08"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="fill_parent"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -72,11 +72,10 @@
                         android:layout_weight="1"
                         android:background="@drawable/m_teal" >
 
-                       
                         <TextView
                             android:id="@+id/TextView13"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -86,7 +85,7 @@
                         <TextView
                             android:id="@+id/TextView09"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -96,7 +95,7 @@
                         <TextView
                             android:id="@+id/TextView08"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -106,7 +105,7 @@
                     </LinearLayout>
 
                     <ListView
-                        android:id="@+id/listPath"
+                        android:id="@+id/list"
                         android:layout_width="fill_parent"
                         android:layout_height="0dp"
                         android:layout_weight="5"

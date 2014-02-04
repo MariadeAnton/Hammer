@@ -17,7 +17,7 @@ public class WindowList extends FrameLayout {
 	private TextView tittle;
 	private ListView listPath;
 	private LinearLayout tittlePoints,tittlePath;
-	private int mode;
+	private boolean showList=false;
 	
 	
 	public WindowList(Context context) {
@@ -49,12 +49,12 @@ public class WindowList extends FrameLayout {
 
 	public void onCreate(LayoutInflater inflater) {
 		
-		
+		isInEditMode();
 		LinearLayout windowLayout=(LinearLayout)inflater.inflate(R.layout.list_points,null);
 		
-		tittle=(TextView)windowLayout.findViewById(R.id.tittleList);
-		listPath=(ListView)windowLayout.findViewById(R.id.listPath);
-		tittlePoints=(LinearLayout)windowLayout.findViewById(R.id.tittlePoints);
+		tittle=(TextView)windowLayout.findViewById(R.id.tittle);
+		listPath=(ListView)windowLayout.findViewById(R.id.list);
+		tittlePoints=(LinearLayout)windowLayout.findViewById(R.id.subtittle);
 		tittlePath=(LinearLayout)windowLayout.findViewById(R.id.tittlePath);
 		tittlePath.setVisibility(View.GONE);
 		addView(windowLayout);
@@ -72,6 +72,12 @@ public class WindowList extends FrameLayout {
 		return listPath;
 	}
 	
+	public void setListPath(ListView list)
+	{
+		listPath=list;
+		
+	}
+	
 	public void setMode(int mode)
 	{
 		if(mode==0)
@@ -86,5 +92,23 @@ public class WindowList extends FrameLayout {
 		}
 		
 	}
+	
+	public void showList(boolean show)
+	{
+		showList=show;
+		if(show)listPath.setVisibility(View.GONE);
+		else listPath.setVisibility(View.VISIBLE);
+	}
+	
+	
+		
+	
+	
+	public boolean isShowingList()
+	{
+		return showList;
+	}
+	
+	
 	
 }

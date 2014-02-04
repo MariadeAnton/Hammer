@@ -2,4 +2,34 @@
 <resources>
         <color name="pressed_color">#FF00BF</color>
     	<color name="default_color">#ffffff</color>
+    	<color name="m_white">#EDEDED</color>
+    	<color name="m_transparent">#00000000</color>
+    	
+    	<color name="m_orange_tittle">#FB7F00</color>
+    	<color name="m_orange">#FF9F00</color>
+    	<color name="m_orange_l1">#FDB63F</color>
+    	<color name="m_orange_l2">#FDC972</color>
+    	<color name="m_orange_d1">#BC872F</color>
+    	<color name="m_orange_d2">#A36600</color>
+    	
+    	<color name="m_blue">#0E4EA5</color>
+    	<color name="m_blue_l1">#427FD2</color>
+    	<color name="m_blue_l2">#6995D2</color>
+    	<color name="m_blue_d1">#274B7C</color>
+    	<color name="m_blue_d2">#05306B</color>
+    	
+    	<color name="m_red">#F7000C</color>
+    	<color name="m_red_l1">#F7000C</color>
+    	<color name="m_red_l2">#FB7178</color>
+    	<color name="m_red_d1">#B92E35</color>
+    	<color name="m_red_d2">#A00008</color>
+    	
+    	<color name="m_green">#14CE00</color>
+    	<color name="m_green_l1">#4AE63A</color>
+    	<color name="m_green_l2">#74E668</color>
+    	<color name="m_green_d1">#329A27</color>
+    	<color name="m_green_d2">#0D8600</color>
+    					
+   
+    	
 </resources>

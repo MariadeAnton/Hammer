@@ -1,0 +1,975 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dispatcherLay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/categories"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/c_move"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/m_yellow"
+                    android:onClick="onChangeCategories"
+                    android:text="Move" />
+
+                <Button
+                    android:id="@+id/c_control"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/m_skyblue"
+                    android:onClick="onChangeCategories"
+                    android:text="Control" />
+
+                <Button
+                    android:id="@+id/c_comp"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/m_orange"
+                    android:onClick="onChangeCategories"
+                    android:text="Relational operators" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/c_var"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/m_green"
+                    android:onClick="onChangeCategories"
+                    android:text="Variables" />
+
+                <Button
+                    android:id="@+id/c_oper"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/m_purple"
+                    android:onClick="onChangeCategories"
+                    android:text="Robot " />
+
+                <Button
+                    android:id="@+id/c_user"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/m_red"
+                    android:onClick="onChangeCategories"
+                    android:text="User Commands" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/lay_cat"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7" >
+
+            <GridLayout
+                android:id="@+id/l_move"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="#EFC75B"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:rowCount="4"
+                android:visibility="visible" >
+
+                <com.test.MyTouchableLayout
+                    android:id="@+id/mup"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="left"
+                    android:layout_margin="5dp"
+                    android:layout_rowSpan="1"
+                    android:background="@drawable/move_draw"
+                    android:visibility="visible" >
+
+                    <TextView
+                        android:id="@+id/endCoord"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center|left"
+                        android:text="  MOVE_X"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </com.test.MyTouchableLayout>
+
+                <com.test.MyTouchableLayout
+                    android:id="@+id/mdo"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="right"
+                    android:layout_margin="5dp"
+                    android:layout_rowSpan="1"
+                    android:background="@drawable/move_draw" >
+
+                    <TextView
+                        android:id="@+id/endCoord"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center|left"
+                        android:text="  MOVE_Y"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </com.test.MyTouchableLayout>
+
+                <com.test.MyTouchableLayout
+                    android:id="@+id/mle"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="5dp"
+                    android:layout_rowSpan="1"
+                    android:background="@drawable/move_draw" >
+
+                    <TextView
+                        android:id="@+id/endCoord"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center|left"
+                        android:text="  MOVE_Z"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </com.test.MyTouchableLayout>
+
+                <com.test.MyTouchableLayout
+                    android:id="@+id/tux"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="right"
+                    android:layout_margin="5dp"
+                    android:layout_rowSpan="1"
+                    android:background="@drawable/move_draw" >
+
+                    <TextView
+                        android:id="@+id/endCoord"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center|left"
+                        android:text="  TURN_X"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </com.test.MyTouchableLayout>
+
+                <com.test.MyTouchableLayout
+                    android:id="@+id/tuy"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="left"
+                    android:layout_margin="5dp"
+                    android:layout_rowSpan="1"
+                    android:background="@drawable/move_draw" >
+
+                    <TextView
+                        android:id="@+id/endCoord"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center|left"
+                        android:text="  TURN_Y"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </com.test.MyTouchableLayout>
+
+                <com.test.MyTouchableLayout
+                    android:id="@+id/tuz"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="right"
+                    android:layout_margin="5dp"
+                    android:layout_rowSpan="1"
+                    android:background="@drawable/move_draw" >
+
+                    <TextView
+                        android:id="@+id/endCoord"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center|left"
+                        android:text="  TURN_Z"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </com.test.MyTouchableLayout>
+            </GridLayout>
+
+            <GridLayout
+                android:id="@+id/l_control"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#3D8EF7"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:visibility="invisible" >
+
+                <com.test.MyTouchableLayout
+                    android:id="@+id/buttonrep"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="left"
+                    android:layout_margin="5dp"
+                    android:layout_rowSpan="1"
+                    android:background="@drawable/repeat_draw" >
+
+                    <TextView
+                        android:id="@+id/TextView08"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:paddingTop="20dp"
+                        android:text="  Repeat"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </com.test.MyTouchableLayout>
+
+                <com.test.MyTouchableLayout
+                    android:id="@+id/ifcontrol"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="right"
+                    android:layout_margin="5dp"
+                    android:layout_rowSpan="1"
+                    android:background="@drawable/control_draw" >
+
+                    <TextView
+                        android:id="@+id/TextView08"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:paddingTop="20dp"
+                        android:text="  If"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </com.test.MyTouchableLayout>
+
+                <com.test.MyTouchableLayout
+                    android:id="@+id/dowhile"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="left"
+                    android:layout_margin="5dp"
+                    android:layout_rowSpan="1"
+                    android:background="@drawable/control_draw" >
+
+                    <TextView
+                        android:id="@+id/TextView08"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:paddingTop="20dp"
+                        android:text="  Do while"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </com.test.MyTouchableLayout>
+
+                <com.test.MyTouchableLayout
+                    android:id="@+id/cwhile"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="right"
+                    android:layout_margin="5dp"
+                    android:layout_rowSpan="1"
+                    android:background="@drawable/control_draw" >
+
+                    <TextView
+                        android:id="@+id/TextView08"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:paddingTop="20dp"
+                        android:text="  While"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </com.test.MyTouchableLayout>
+            </GridLayout>
+
+            <ScrollView
+                android:id="@+id/l_comp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible" >
+
+                <GridLayout
+                    android:id="@+id/l_comp_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FE794F"
+                    android:columnCount="2"
+                    android:orientation="horizontal"
+                    android:rowCount="3"
+                    android:visibility="visible" >
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/greater"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="left"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/comp_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X > Y"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/c_greater"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="left"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/comp_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X > a"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/greater_equal"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="right"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/comp_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X >= Y"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/c_greater_equal"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="right"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/comp_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X >= a"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/less"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="right"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/comp_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X &lt; Y"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/c_less"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="right"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/comp_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X &lt; a"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/less_equal"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="left"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/comp_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X &lt;= Y"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/c_less_equal"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="left"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/comp_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X &lt;= a"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/equal"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="left"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/comp_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X == Y"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/c_equal"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="left"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/comp_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X == a"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/always"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="left"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/comp_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="Always"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+                </GridLayout>
+            </ScrollView>
+
+            <ScrollView
+                android:id="@+id/l_var"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible" >
+
+                <GridLayout
+                    android:id="@+id/l_var_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#22C822"
+                    android:columnCount="2"
+                    android:orientation="horizontal"
+                    android:rowCount="4"
+                    android:visibility="visible" >
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/xpp"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="left"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/var_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X++"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/xll"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="right"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/var_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X--"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/xpy"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="left"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/var_draw" >
+
+                        <TextView
+                            android:id="@+id/textView46"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X + Y"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/c_xpy"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="right"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/var_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X + a"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/xly"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="left"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/var_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X - Y"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/c_xly"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="right"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/var_draw" >
+
+                        <TextView
+                            android:id="@+id/textView45"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X - a"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/xmy"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="left"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/var_draw" >
+
+                        <TextView
+                            android:id="@+id/textView44"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X * Y"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/c_xmy"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="right"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/var_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X * a"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/xdy"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="left"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/var_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X / Y"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/c_xdy"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="right"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/var_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X / a"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/xey"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="left"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/var_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X = Y"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/c_xey"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="right"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/var_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="X = a"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/rvalue"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="left"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/var_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="Reasign Value"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+
+                    <com.test.MyTouchableLayout
+                        android:id="@+id/value"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="right"
+                        android:layout_margin="5dp"
+                        android:layout_rowSpan="1"
+                        android:background="@drawable/var_draw" >
+
+                        <TextView
+                            android:id="@+id/endCoord"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:text="Value"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </com.test.MyTouchableLayout>
+                </GridLayout>
+            </ScrollView>
+
+            <GridLayout
+                android:id="@+id/l_oper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#C922CF"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:rowCount="4"
+                android:visibility="invisible" >
+
+                <com.test.MyTouchableLayout
+                    android:id="@+id/deburrng"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="left"
+                    android:layout_margin="5dp"
+                    android:layout_rowSpan="1"
+                    android:background="@drawable/robot_draw" >
+
+                    <TextView
+                        android:id="@+id/endCoord"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center|left"
+                        android:text="  Deburring"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </com.test.MyTouchableLayout>
+
+                <com.test.MyTouchableLayout
+                    android:id="@+id/sip"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="right"
+                    android:layout_margin="5dp"
+                    android:layout_rowSpan="1"
+                    android:background="@drawable/robot_draw" >
+
+                    <TextView
+                        android:id="@+id/endCoord"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center|left"
+                        android:text="  Init Position"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </com.test.MyTouchableLayout>
+            </GridLayout>
+
+            <GridLayout
+                android:id="@+id/l_user"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#DF3F6D"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:rowCount="4"
+                android:visibility="invisible" >
+
+                <com.test.MyTouchableLayout
+                    android:id="@+id/pressexe"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="left"
+                    android:layout_margin="5dp"
+                    android:layout_rowSpan="1"
+                    android:background="@drawable/start" >
+
+                    <TextView
+                        android:id="@+id/endCoord"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center|left"
+                        android:gravity="center"
+                        android:text="   Start"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </com.test.MyTouchableLayout>
+
+                <com.test.MyTouchableLayout
+                    android:id="@+id/conf"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="right"
+                    android:layout_margin="5dp"
+                    android:layout_rowSpan="1"
+                    android:background="@drawable/user_draw" >
+
+                    <TextView
+                        android:id="@+id/endCoord"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center|left"
+                        android:text="   Loop Break"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </com.test.MyTouchableLayout>
+            </GridLayout>
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/execute"
+            style="@style/btnStyleBlackpearl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:onClick="execute"
+            android:text="EXECUTE"
+            android:textAppearance="?android:attr/textAppearanceLargeInverse" />
+
+    </LinearLayout>
+
+</FrameLayout><!-- From: file:/C:/Users/Carlos/Dropbox/Hammer/Test/res/layout/frag_buttons.xml -->

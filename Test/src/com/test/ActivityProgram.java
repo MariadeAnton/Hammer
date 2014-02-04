@@ -9,10 +9,12 @@ import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -24,10 +26,10 @@ public class ActivityProgram extends Activity {
 	
 	static String programFolder="Programs/";
 	
-	private Window3D window3D;
+	private WindowEnvironment envWindow;
 	private MyVariableGrid var;
 	private MySchemaSurface schema;
-	private ListView list,pathList,pointsList;
+	private ListView list;
 	private ArrayList<ListItem> aList;
 	private AdapterItems adapter;
 	private ListItem itemSelected;
@@ -44,16 +46,15 @@ public class ActivityProgram extends Activity {
 		activity=this;
 		var=(MyVariableGrid)findViewById(R.id.infoVariables);
 		list=(ListView)findViewById(R.id.listProgram);
-		pointsList=(ListView)findViewById(R.id.pointsLoaded);
-		pathList=(ListView)findViewById(R.id.pathLoaded);
-		window3D=(Window3D)findViewById(R.id.window3D);
-		window3D.getView3D().loadEnvironment(GeneralParameters.getEnvironment());
-		window3D.setTittle((GeneralParameters.getEnvironment()!=null)?GeneralParameters.getEnvironment().getName():"No Environment Loaded");
+		envWindow=(WindowEnvironment)findViewById(R.id.envWindow);
+		envWindow.onCreate(this, (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE));
+		if(GeneralParameters.getEnvironment()!=null)envWindow.getWindow3D().getView3D().getRenderer().loadEnvironment(GeneralParameters.getEnvironment());
+		envWindow.getWindow3D().setTittle((GeneralParameters.getEnvironment()!=null)?GeneralParameters.getEnvironment().getName():"No Environment Loaded");
+		envWindow.setEnvironment(GeneralParameters.getEnvironment());
 		schema=(MySchemaSurface)findViewById(R.id.glEnvironment);
 		schema.enableTouchEvent(false);
 		schema.setScale(0.8f,0.5f);
 		if(GeneralParameters.getEnvironment()!=null)
-		pointsList.setAdapter(new AuxAdapterPoints(this,GeneralParameters.getEnvironment().getPoints()));
 		
 		aList=new ArrayList<ListItem>();
 		adapter=new AdapterItems(this,aList);
@@ -78,7 +79,10 @@ public class ActivityProgram extends Activity {
 			list.setOnItemClickListener(new MyClickListener());
 		//	list.setBackgroundColor(R.drawable.bg_key);
 			list.setSelector(R.drawable.bg_key);
+			
 	}
+	
+	
 
 	class MyClickListener implements OnItemClickListener
 	{
@@ -88,7 +92,7 @@ public class ActivityProgram extends Activity {
 
 			view.setSelected(true);
 			schema.clearSurface();
-			schema.onResume();
+			//schema.onResume();
 			itemSelected=aList.get(position);
 		
 			
@@ -102,6 +106,7 @@ public class ActivityProgram extends Activity {
 				AuxAdapterVariables adapterVar=new AuxAdapterVariables(activity,var.getVariables());
 				var.setAdapter(adapterVar);
 				adapter.notifyDataSetChanged();
+				schema.invalidate();
 				is.close();
 			
 			} catch (FileNotFoundException e) {
@@ -124,7 +129,7 @@ public class ActivityProgram extends Activity {
 	
 	public void newProgram(View view)
 	{
-		Intent i=new Intent(this,ActivityScratch.class);
+		Intent i=new Intent(this,ActivityScratching.class);
 		startActivity(i);
 		var.removeVariables();
 		finish();
@@ -141,7 +146,7 @@ public class ActivityProgram extends Activity {
 			toast.show();
 			return;
 		}
-		Intent i=new Intent(this,ActivityScratch.class);
+		Intent i=new Intent(this,ActivityScratching.class);
 		i.putExtra("loadprogram",itemSelected.getName());
 		startActivity(i);
 		finish();

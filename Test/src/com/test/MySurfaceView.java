@@ -39,6 +39,7 @@ public abstract class MySurfaceView extends SurfaceView implements SurfaceHolder
 	{
 		getHolder().addCallback(this);
 		thread=new MySurfaceThread(getHolder(),this);
+		
 		gestureDetector=new GestureDetectorCompat(context,this);
 		
 		
@@ -53,9 +54,12 @@ public abstract class MySurfaceView extends SurfaceView implements SurfaceHolder
 	@Override
 	public void surfaceCreated(SurfaceHolder arg0) {
 		// TODO Auto-generated method stub
+		
 		thread.setDestroying(false);
 		thread.setRunning(true);
 		thread.start();
+		
+		
 		
 	}
 

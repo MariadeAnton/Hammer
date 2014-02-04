@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
 
 	public void ScratchGLTest(View view)
 	{
-		Intent i=new Intent(this,ActivityScratch.class);
+		Intent i=new Intent(this,ActivityScratching.class);
 		startActivity(i);
 	
 		
@@ -63,10 +63,25 @@ public class MainActivity extends Activity {
 		startActivity(i);
 	}
 	
+	public void Targets(View view)
+	{
+		Intent i=new Intent(this,ImageTargets.class);
+		startActivity(i);
+	}
+	
 	public void Exit(View view)
 	{
 		finish();
 	}
-	
+	public void Robot(View view)
+	{
+		Intent i=new Intent(this,ActivityRobot.class);
+		startActivity(i);
+	}
+	public void Graphics(View view)
+	{
+		Intent i=new Intent(this,ActivityGraphics.class);
+		startActivity(i);
+	}
 	
 }

@@ -1,0 +1,36 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.test">
+
+    <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="15"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    <supports-gl-texture android:name="GL_OES_compressed_ETC1_RGB8_texture"/>
+	<supports-gl-texture android:name="GL_OES_compressed_paletted_texture"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
+
+    <application android:allowBackup="true" android:icon="@drawable/logoico" android:label="@string/app_name" android:theme="@style/AppTheme">
+        <activity android:label="@string/app_name" android:name="com.test.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.test.ActivityConfig" android:screenOrientation="landscape" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name="com.test.ActivityProgram" android:screenOrientation="landscape"/>
+        <activity android:name="com.test.ActivityEnvironment" android:screenOrientation="landscape"/>
+        <activity android:name="com.test.ActivityScratch" android:screenOrientation="landscape" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name="com.test.ActivityLoader"/>
+        <activity android:name="com.test.helloworld"/>
+        <activity android:name="com.test.ImageTargets" android:screenOrientation="landscape"/>
+        <activity android:name="com.test.ActivityScratching" android:screenOrientation="landscape" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name="com.test.ActivityRobot" android:theme="@style/CustomActionBarTheme" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="com.test.ActivityGraphics"/>
+    </application>
+
+</manifest>

@@ -5,12 +5,8 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
-import android.graphics.Path;
 import android.graphics.Shader;
 import android.graphics.Typeface;
-import android.widget.TextView;
-
-import com.test.AuxBasicVariables.StringValue;
 
 
 
@@ -21,8 +17,8 @@ public class ButtonComparer extends PositionableObject {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private StringValue vA=AuxBasicVariables.createString("?");
-	private StringValue vB=AuxBasicVariables.createString("?"); 
+	private String vA=new String("?");
+	private String vB=new String("?"); 
 	private boolean complementable=false;
 	
 	private int colorD=Color.parseColor("#D24726");
@@ -60,7 +56,7 @@ public class ButtonComparer extends PositionableObject {
 
 	protected  void drawBackground(Canvas c)
 	{
-		path=new Path();
+		path.reset();
 		paint.setShader(new LinearGradient(0, 0, getWidth(),0,colorD,colorL,  Shader.TileMode.MIRROR));
 		 
 		paint.setStyle(Style.FILL_AND_STROKE);
@@ -105,8 +101,8 @@ public class ButtonComparer extends PositionableObject {
 		paint.setTextSize(getHeight()/2);
 		c.drawText(getName(),posX,posY-(paint.descent()+paint.ascent())/2, paint);
 		if(type==ALWAYS)return;
-		c.drawText(vA.getString(),posX-width/4,posY-(paint.descent()+paint.ascent())/2, paint);
-		c.drawText(vB.getString(),posX+width/4,posY-(paint.descent()+paint.ascent())/2, paint);
+		c.drawText(vA,posX-width/4,posY-(paint.descent()+paint.ascent())/2, paint);
+		c.drawText(vB,posX+width/4,posY-(paint.descent()+paint.ascent())/2, paint);
 		
 	}
 	
@@ -121,18 +117,18 @@ public class ButtonComparer extends PositionableObject {
 
 
 	public String getvA() {
-		return vA.getString();
+		return vA;
 	}
 
-	public void setvA(StringValue vA) {
+	public void setvA(String vA) {
 		this.vA = vA;
 	}
 
 	public String getvB() {
-		return vB.getString();
+		return vB;
 	}
 
-	public void setvB(StringValue vB) {
+	public void setvB(String vB) {
 		this.vB = vB;
 	}
 	
@@ -141,30 +137,30 @@ public class ButtonComparer extends PositionableObject {
 	@Override
 	public boolean execute(Client client) {
 		
-		variables=((ActivityScratch)getActivity()).getVarGrid();
+		variables=((ActivityScratching)getActivity()).getVariables().getVarGrid();
 		if(type!=ALWAYS)
-			if(variables.searchVariable(vA.getString())==null || variables.searchVariable(vB.getString())==null)
+			if(variables.searchVariable(vA)==null || variables.searchVariable(vB)==null)
 					return false;
 		switch (type)
 		{
 			case ObjectExecutable.GREATER_THAN:
-				if(variables.searchVariable(vA.getString())>variables.searchVariable(vB.getString()))	return true;
+				if(variables.searchVariable(vA)>variables.searchVariable(vB))	return true;
 				break;		
 				
 			case ObjectExecutable.LESS_THAN:
-				if(variables.searchVariable(vA.getString())<variables.searchVariable(vB.getString()))	return true;
+				if(variables.searchVariable(vA)<variables.searchVariable(vB))	return true;
 				break;
 			
 			case ObjectExecutable.EQUAL_THAN:
-				if(variables.searchVariable(vA.getString())==variables.searchVariable(vB.getString()))	return true;
+				if(variables.searchVariable(vA)==variables.searchVariable(vB))	return true;
 				break;
 		
 			case ObjectExecutable.GREATER_EQUAL_THAN:
-				if(variables.searchVariable(vA.getString())>=variables.searchVariable(vB.getString()))	return true;
+				if(variables.searchVariable(vA)>=variables.searchVariable(vB))	return true;
 				break;		
 				
 			case ObjectExecutable.LESS_EQUAL_THAN:
-				if(variables.searchVariable(vA.getString())<=variables.searchVariable(vB.getString()))	return true;
+				if(variables.searchVariable(vA)<=variables.searchVariable(vB))	return true;
 				break;
 			case ObjectExecutable.ALWAYS:
 				return true;
@@ -242,7 +238,7 @@ public class ButtonComparer extends PositionableObject {
 	
 	@Override
 	public void showParametersLayout() {
-		
+	/*	
 		if(type==ALWAYS)return;
 		MyTouchableLayout comParam; 
 		   
@@ -252,14 +248,19 @@ public class ButtonComparer extends PositionableObject {
 		else
 			comParam=(MyTouchableLayout)activity.findViewById(R.id.compLay);
 		 
-
-         
+*/
 		
-		comParam.setStringValue(vA);
-        comParam.setStringValue2(vB);
-		comParam.setIntercept(false);
-		((TextView)comParam.findViewById(R.id.oper)).setText(name);
-		((ActivityScratch)getActivity()).showButtonParameters(comParam);
+		if(type==ALWAYS)return;
+		
+		if(type>=CONSTANT)
+        ((ActivityScratching) activity).showButtonLayout(new FragmentComparerConst(((ActivityScratching)activity).getVariables().getVarGrid(),this),this);
+		else
+		((ActivityScratching) activity).showButtonLayout(new FragmentComparer(((ActivityScratching)activity).getVariables().getVarGrid(),this),this);
+		
+		
+		
+	
+		
 		modificate=true;
        
 	}
@@ -268,4 +269,22 @@ public class ButtonComparer extends PositionableObject {
 	{
 		variables=grid;
 	}
+
+	public ButtonComparer(PositionableObject obj) {
+		super(obj);
+		ButtonComparer comparer=(ButtonComparer)obj;
+		vA=comparer.vA;
+		vB=comparer.vB;
+		variables=comparer.variables;
+		
+	}
+
+	@Override
+	public PositionableObject copyFields(PositionableObject obj) {
+		
+		return new ButtonComparer(obj);
+		
+	}
+
+	
 }

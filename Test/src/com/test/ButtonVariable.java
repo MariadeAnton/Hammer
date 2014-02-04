@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
-import android.graphics.Path;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 
@@ -30,6 +29,18 @@ public class ButtonVariable extends PositionableObject {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
+	public ButtonVariable(PositionableObject obj) {
+		super(obj);
+		ButtonVariable var=(ButtonVariable)obj;
+		nameVar=var.nameVar;
+		function=var.function;
+		variables=var.variables;
+	}
+
+
+
 	public ButtonVariable(int width,int height) {
 		super(width,height);
 		
@@ -117,7 +128,7 @@ public class ButtonVariable extends PositionableObject {
 	@Override
 	protected void drawBackground(Canvas c) {
 		// TODO Auto-generated method stub
-		path=new Path();
+		path.reset();
 		paint.setStyle(Style.FILL);
 		paint.setShader(new LinearGradient(0, 0, getWidth(),0,colorD,colorL,  Shader.TileMode.MIRROR));
 		 
@@ -192,22 +203,29 @@ public class ButtonVariable extends PositionableObject {
 	public void showParametersLayout() {
 		
 		
-         MyTouchableLayout varSelect=(MyTouchableLayout)activity.findViewById(R.id.selVarLay);
-         varSelect.setIntercept(false);
-         varSelect.setStringValue(nameVar);
-         varSelect.setParameter(parameter);
-         ((ActivityScratch)getActivity()).showButtonParameters(varSelect);
-         modificate=true;
+     
+         ((ActivityScratching) activity).showButtonLayout(new FragmentSelectVar(((ActivityScratching)activity).getVariables().getVarGrid(),this),this);
+ 		
+ 		
+
 	}
 
 	public double getVariableValue()
 	{
-		variables=((ActivityScratch)getActivity()).getVarGrid();
+		variables=((ActivityScratching)getActivity()).getVariables().getVarGrid();
 		return variables.searchVariable(nameVar.getString());
 	}
 	
 	public void setVariablesGrid(MyVariableGrid grid)
 	{
 		variables=grid;
+	}
+
+
+
+	@Override
+	public PositionableObject copyFields(PositionableObject obj) {
+		// TODO Auto-generated method stub
+		return new ButtonVariable(obj);
 	}
 }

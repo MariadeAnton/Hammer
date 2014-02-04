@@ -30,17 +30,31 @@
        <item name="android:shadowRadius">0.6</item>
        <item name="android:background">@drawable/b_blackpearl</item>
        <item name="android:padding">10dip</item>
+       
    </style>
    
     <style name="dialogTheme" parent="android:Theme">
     <item name="android:windowIsTranslucent">true</item>
-    <item name="android:backgroundDimEnabled">false</item>
+    <item name="android:backgroundDimEnabled">true</item>
     <item name="android:windowNoTitle">false</item>
     <item name="android:windowIsFloating">true</item>
     <item name="android:windowFullscreen">true</item>
-    <item name="android:windowAnimationStyle">@null</item>
+    <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
     <item name="android:windowFrame">@null</item>
-    <item name="android:windowBackground">@drawable/m_blue</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:background">@android:color/transparent</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowTitleStyle">@null</item>
+
+    
+
+    
+
+  
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+   
+    
+    
 </style>
 
   
@@ -64,7 +78,21 @@
        <item name="android:background">@drawable/b_beige</item>
        <item name="android:padding">10dip</item>
    </style>
+   
+       <style name="orange_style_round_right">
+       <item name="android:textSize">15sp</item>
+       <item name="android:textStyle">bold</item>
+       <item name="android:layout_marginTop">5dp</item>
+       <item name="android:layout_marginBottom">5dp</item>
+       <item name="android:layout_marginRight">5dp</item>
+       <item name="android:textColor">@color/m_white</item>
+       <item name="android:gravity">center</item>
+       <item name="android:background">@drawable/shape_orange_right</item>
+      
+       
+   </style>
 
+     
    
     
 </resources>

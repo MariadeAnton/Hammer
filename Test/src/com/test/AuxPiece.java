@@ -3,7 +3,6 @@ package com.test;
 import java.util.ArrayList;
 
 import com.test.AuxBasicVariables.Paths;
-import com.test.AuxBasicVariables.Point3D;
 import com.threed.jpct.Object3D;
 
 

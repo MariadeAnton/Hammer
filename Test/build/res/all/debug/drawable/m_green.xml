@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+       <item>
+        <shape>
+            <gradient 
+                android:angle="0"
+                android:startColor="#008A00"
+                android:endColor="#00A600"
+                android:type="linear"
+         	/>
+        </shape>     
+    </item>
+
+</selector>
+<!-- From: file:/C:/Users/Carlos/Dropbox/Hammer/Test/res/drawable/m_green.xml -->

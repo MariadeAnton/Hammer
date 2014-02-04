@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
-import android.graphics.Path;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 
@@ -45,6 +44,18 @@ public class ButtonControl extends ButtonLinkAddable {
 		
 	}
 	
+	
+	
+	
+	public ButtonControl(PositionableObject obj) {
+		super(obj);
+		ButtonControl cont=(ButtonControl)obj;
+		slave=cont.slave;
+		condition=cont.condition;
+	}
+
+
+
 	public ButtonControl(int width,int height) {
 		super(width,height);
 		
@@ -150,7 +161,7 @@ public class ButtonControl extends ButtonLinkAddable {
 	
 
 		
-		path=new Path();
+		path.reset();
 		paint.setStyle(Style.FILL);
 		paint.setShader(new LinearGradient(0, 0, getWidth(),0,colorD,colorL,  Shader.TileMode.MIRROR));
 		 
@@ -223,7 +234,7 @@ public class ButtonControl extends ButtonLinkAddable {
 			paint.setStyle(Style.FILL);
 			paint.setStrokeWidth(2.5f);
 			paint.setTextAlign(Align.CENTER);
-			c.drawText(String.valueOf(parameter.getValue()),conditionPosX+widthSup/4,
+			c.drawText(String.valueOf(parameter),conditionPosX+widthSup/4,
 						posY-(paint.descent()+paint.ascent())/2,paint);
 		}
 		
@@ -232,7 +243,7 @@ public class ButtonControl extends ButtonLinkAddable {
 		
 		else 
 		{
-			path=new Path();
+			path.reset();
 			paint.setShader(new LinearGradient(0, 0, getWidth(),0,colorDCond,colorLCond,  Shader.TileMode.MIRROR));
 			 
 			
@@ -279,7 +290,7 @@ public class ButtonControl extends ButtonLinkAddable {
 			break;
 		
 		case ObjectExecutable.FOR_BUTTON:
-			for(int i=0;i<parameter.getValue();i++)
+			for(int i=0;i<parameter;i++)
 			{
 				if(slave!=null)
 				{
@@ -341,14 +352,16 @@ public void showParametersLayout() {
 		
 		if(type==FOR_BUTTON)
 		{
-		
+/*		
 		MyTouchableLayout touchLay;
 
 		touchLay=(MyTouchableLayout)activity.findViewById(R.id.valueLay);
 		touchLay.setIntercept(false);
 		touchLay.setParameter(parameter);
 
-		((ActivityScratch)getActivity()).showButtonParameters(touchLay);
+		((ActivityScratch)getActivity()).showButtonParameters(touchLay);*/
+		((ActivityScratching) activity).showButtonLayout(new FragmentParameter(this),this);
+			
 		modificate=true;
 		}
 	}
@@ -427,6 +440,15 @@ public void showParametersLayout() {
 			if(slave!=null)
 				slave.setErasable(erase);
 			
+		}
+
+
+
+
+		@Override
+		public PositionableObject copyFields(PositionableObject obj) {
+			// TODO Auto-generated method stub
+			return new ButtonControl(obj);
 		}
 		
 }

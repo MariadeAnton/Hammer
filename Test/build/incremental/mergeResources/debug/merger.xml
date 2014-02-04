@@ -1,0 +1,1086 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="CarlosHephestosSlidingMenuMasterLibraryUnspecified.aar" >
+        <source path="C:\Users\Carlos\Dropbox\Hammer\Test\build\exploded-bundles\CarlosHephestosSlidingMenuMasterLibraryUnspecified.aar\res" >
+            <file
+                name="slidingmenumain"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\build\exploded-bundles\CarlosHephestosSlidingMenuMasterLibraryUnspecified.aar\res\layout\slidingmenumain.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\build\exploded-bundles\CarlosHephestosSlidingMenuMasterLibraryUnspecified.aar\res\values\values.xml"
+                qualifiers="" >
+                <item
+                    name="selected_view"
+                    type="id"/>
+
+                <declare-styleable name="SlidingMenu" >
+                    <attr name="mode" >
+                        <enum
+                            name="left"
+                            value="0" />
+                        <enum
+                            name="right"
+                            value="1" />
+                    </attr>
+                    <attr
+                        name="viewAbove"
+                        format="reference" />
+                    <attr
+                        name="viewBehind"
+                        format="reference" />
+                    <attr
+                        name="behindOffset"
+                        format="dimension" />
+                    <attr
+                        name="behindWidth"
+                        format="dimension" />
+                    <attr
+                        name="behindScrollScale"
+                        format="float" />
+                    <attr name="touchModeAbove" >
+                        <enum
+                            name="margin"
+                            value="0" />
+                        <enum
+                            name="fullscreen"
+                            value="1" />
+                    </attr>
+                    <attr name="touchModeBehind" >
+                        <enum
+                            name="margin"
+                            value="0" />
+                        <enum
+                            name="fullscreen"
+                            value="1" />
+                    </attr>
+                    <attr
+                        name="shadowDrawable"
+                        format="reference" />
+                    <attr
+                        name="shadowWidth"
+                        format="dimension" />
+                    <attr
+                        name="fadeEnabled"
+                        format="boolean" />
+                    <attr
+                        name="fadeDegree"
+                        format="float" />
+                    <attr
+                        name="selectorEnabled"
+                        format="boolean" />
+                    <attr
+                        name="selectorDrawable"
+                        format="reference" />
+                </declare-styleable>
+            </file>
+        </source>
+    </dataSet>
+    <dataSet config="main" >
+        <source path="C:\Users\Carlos\Dropbox\Hammer\Test\res" >
+            <file
+                name="black_pressed"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\color\black_pressed.xml"
+                qualifiers=""
+                type="color" />
+            <file
+                name="bg_key"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\bg_key.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="b_beige"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\b_beige.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="b_blackpearl"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\b_blackpearl.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="dialog_shape"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\dialog_shape.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="listitem_background"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\listitem_background.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_black"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_black.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_blackpearl"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_blackpearl.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_blue"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_blue.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_brown"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_brown.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_darkpurple"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_darkpurple.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_green"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_green.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_greenlight"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_greenlight.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_grey"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_grey.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_lime"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_lime.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_orange"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_orange.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_orangelight"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_orangelight.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_pink"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_pink.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_purple"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_purple.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_red"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_red.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_skyblue"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_skyblue.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_teal"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_teal.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_whitepearl"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_whitepearl.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="m_yellow"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\m_yellow.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="red_shape"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\red_shape.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="shader_orange_left"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\shader_orange_left.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="shader_purple"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\shader_purple.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="shape_blue"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\shape_blue.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="shape_green"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\shape_green.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="shape_orange"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\shape_orange.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="shape_red"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\shape_red.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="soi_1"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\soi_1.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="soi_2"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\soi_2.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="soi_3"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\soi_3.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="soi_4"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\soi_4.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="soi_5"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\soi_5.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="soi_button_shape"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable\soi_button_shape.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ar"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\ar.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="cam"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\cam.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="cam_act"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\cam_act.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="com"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\com.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="comau"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\comau.jpg"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="command"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\command.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="comp_draw"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\comp_draw.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="connect"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\connect.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="connection"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\connection.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="control_draw"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\control_draw.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="darklogo"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\darklogo.jpg"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="defaultcam"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\defaultcam.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="del"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\del.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="delwhite"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\delwhite.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="env"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\env.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="envi"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\envi.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="exit"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\exit.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="hammer"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\hammer.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="hammerfile"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\hammerfile.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="hammerfile_white"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\hammerfile_white.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\ic_launcher.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="info"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\info.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="initial"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\initial.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="line_off"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\line_off.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="line_on"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\line_on.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="mod"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\mod.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="modify"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\modify.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="move_draw"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\move_draw.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="off"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\off.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="off2"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\off2.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="off3"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\off3.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="offline"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\offline.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="online"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\online.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="piece"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\piece.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="pos"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\pos.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="prog"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\prog.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="program"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\program.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="repeat_draw"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\repeat_draw.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="robot_draw"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\robot_draw.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="savedata"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\savedata.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="set"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\set.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="set2"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\set2.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="setting"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\setting.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="spe"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\spe.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="speed"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\speed.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="start"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\start.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="user_draw"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\user_draw.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="var"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\var.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="vari"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\vari.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="var_draw"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\var_draw.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="vuforia"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\vuforia.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="xmlfile"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-hdpi\xmlfile.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="delete"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\delete.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="hefe"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\hefe.jpg"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="hefesto"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\hefesto.jpg"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="icomodify"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\icomodify.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\ic_launcher.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="light"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\light.jpg"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="lightbackground"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\lightbackground.jpg"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="logo"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\logo.bmp"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="logoback"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\logoback.bmp"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="logoico"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\logoico.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="metalbackground"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\metalbackground.jpg"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="offline"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\offline.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="online"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\online.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="piece"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\piece.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="robot"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\robot.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="save"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\save.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="speed"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-mdpi\speed.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-xhdpi\ic_launcher.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\drawable-xxhdpi\ic_launcher.png"
+                qualifiers="xxhdpi"
+                type="drawable" />
+            <file
+                name="act_graphics"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\act_graphics.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="act_graphics_sensor"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\act_graphics_sensor.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="act_robot"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\act_robot.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="act_scratch"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\act_scratch.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="adapter_string"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\adapter_string.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="ar_layout"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\ar_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="camera_overlay"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\camera_overlay.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="canvas"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\canvas.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="configuration"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\configuration.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="custom_dialog"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\custom_dialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="environment"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\environment.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="frag_buttons"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\frag_buttons.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="frag_canvas"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\frag_canvas.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="frag_dispatcher"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\frag_dispatcher.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="frag_var"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\frag_var.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="function1_format"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\function1_format.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="function2_format"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\function2_format.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="incremental_buttons"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\incremental_buttons.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="incremental_buttons_right"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\incremental_buttons_right.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="item_list"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\item_list.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="list_points"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\list_points.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="menu"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\menu.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="model3d_loader"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\model3d_loader.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="modeling_layout"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\modeling_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="params_comparer"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\params_comparer.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="params_comparer_constant"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\params_comparer_constant.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="params_initial_pos"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\params_initial_pos.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="params_sel_variable"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\params_sel_variable.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="params_value"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\params_value.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="params_variable"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\params_variable.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="point_list"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\point_list.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="program"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\program.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="scratch"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\scratch.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="variable"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\variable.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="view3d_layout"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\view3d_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="window_environment"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\layout\window_environment.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="main"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\menu\main.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="menu"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\menu\menu.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="cardoor"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\raw\cardoor.mtl"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="cardoor_obj"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\raw\cardoor_obj.obj"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="irb"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\raw\irb.mtl"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="irb_obj"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\raw\irb_obj.obj"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="myrobot"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\raw\myrobot.mtl"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="myrobot_obj"
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\raw\myrobot_obj.obj"
+                qualifiers=""
+                type="raw" />
+            <file
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\values\colors.xml"
+                qualifiers="" >
+                <color name="m_orange" >#FF9F00
+                </color>
+                <color name="default_color" >#ffffff
+                </color>
+                <color name="pressed_color" >#FF00BF
+                </color>
+                <color name="m_white" >#F8FBEF
+                </color>
+            </file>
+            <file
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\values\dimens.xml"
+                qualifiers="" >
+                <dimen name="domain_label_font_size" >13dp
+                </dimen>
+                <dimen name="title_font_size" >20dp
+                </dimen>
+                <dimen name="range_label_font_size" >13dp
+                </dimen>
+                <dimen name="pie_segment_label_font_size" >10dp
+                </dimen>
+                <dimen name="range_tick_label_font_size" >15dp
+                </dimen>
+                <dimen name="activity_horizontal_margin" >16dp
+                </dimen>
+                <dimen name="domain_tick_label_font_size" >15dp
+                </dimen>
+                <dimen name="activity_vertical_margin" >16dp
+                </dimen>
+                <dimen name="legend_text_font_size" >20dp
+                </dimen>
+            </file>
+            <file
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\values\strings.xml"
+                qualifiers="" >
+                <string name="action_settings" >Settings
+                </string>
+                <string name="app_name" >Hammer
+                </string>
+                <string name="hello_world" >Hello world!
+                </string>
+            </file>
+            <file
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\values\styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="dialogTheme"
+                    parent="android:Theme" >
+                    <item name="android:windowIsTranslucent">
+true
+                    </item>
+                    <item name="android:backgroundDimEnabled">
+false
+                    </item>
+                    <item name="android:windowNoTitle">
+false
+                    </item>
+                    <item name="android:windowIsFloating">
+true
+                    </item>
+                    <item name="android:windowFullscreen">
+true
+                    </item>
+                    <item name="android:windowAnimationStyle">
+@null
+                    </item>
+                    <item name="android:windowFrame">
+@null
+                    </item>
+                    <item name="android:windowBackground">
+@drawable/m_blue
+                    </item>
+                </style>
+
+                <style name="btnStyleBlackpearl" >
+                    <item name="android:textSize">
+15sp
+                    </item>
+                    <item name="android:textStyle">
+bold
+                    </item>
+                    <item name="android:textColor">
+@color/black_pressed
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                    <item name="android:shadowColor">
+#000000
+                    </item>
+                    <item name="android:shadowDx">
+1
+                    </item>
+                    <item name="android:shadowDy">
+1
+                    </item>
+                    <item name="android:shadowRadius">
+0.6
+                    </item>
+                    <item name="android:background">
+@drawable/b_blackpearl
+                    </item>
+                    <item name="android:padding">
+10dip
+                    </item>
+                </style>
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Light" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+
+                <style
+                    name="Dialog"
+                    parent="android:Theme" >
+                    <item name="android:windowBackground">
+@null
+                    </item>
+                    <item name="android:windowNoTitle">
+true
+                    </item>
+                    <item name="android:windowIsFloating">
+true
+                    </item>
+                    <item name="android:width">
+400dp
+                    </item>
+                </style>
+
+                <style
+                    name="btnStyleBeige"
+                    parent="@android:style/Widget.Button" >
+                    <item name="android:textSize">
+15sp
+                    </item>
+                    <item name="android:textStyle">
+bold
+                    </item>
+                    <item name="android:textColor">
+#5d6153
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                    <item name="android:shadowColor">
+#000000
+                    </item>
+                    <item name="android:shadowDx">
+1
+                    </item>
+                    <item name="android:shadowDy">
+1
+                    </item>
+                    <item name="android:shadowRadius">
+0.6
+                    </item>
+                    <item name="android:background">
+@drawable/b_beige
+                    </item>
+                    <item name="android:padding">
+10dip
+                    </item>
+                </style>
+
+                <style
+                    name="AppTheme"
+                    parent="AppBaseTheme" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+
+                </style>
+            </file>
+            <file
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\values\themes.xml"
+                qualifiers="" >
+
+                <style
+                    name="MyActionBarTitleText"
+                    parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title" >
+                    <item name="android:textColor">
+@color/m_white
+                    </item>
+                </style>
+
+                <style
+                    name="MyActionBar"
+                    parent="@android:style/Widget.Holo.Light.ActionBar" >
+                    <item name="android:background">
+@color/m_orange
+                    </item>
+                </style>
+
+                <style
+                    name="CustomActionBarTheme"
+                    parent="@android:style/Theme.Holo.Light" >
+                    <item name="android:actionBarStyle">
+@style/MyActionBar
+                    </item>
+                </style>
+            </file>
+            <file
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\values-sw720dp-land\dimens.xml"
+                qualifiers="sw720dp-land" >
+                <dimen name="activity_horizontal_margin" >128dp
+                </dimen>
+            </file>
+            <file
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\values-v11\styles.xml"
+                qualifiers="v11" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light" >
+
+                    <!-- API 11 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                path="C:\Users\Carlos\Dropbox\Hammer\Test\res\values-v14\styles.xml"
+                qualifiers="v14" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!-- API 14 theme customizations can go here. -->
+                </style>
+            </file>
+        </source>
+        <source path="C:\Users\Carlos\Dropbox\Hammer\Test\build\res\rs\debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\Users\Carlos\Dropbox\Hammer\Test\build-types\debug\res" />
+    </dataSet>
+
+</merger>

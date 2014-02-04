@@ -3,112 +3,164 @@
     android:id="@+id/dispatcher"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:background="@drawable/logo"
-    android:gravity="center"
+    android:background="@drawable/fondo3"
+    android:gravity="left"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingLeft="0dp"
     tools:context=".MainActivity" >
 
-    <LinearLayout
-        android:id="@+id/LinearLayout2"
+    <TextView
+        android:id="@+id/horSpace"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="100dp"
-        android:layout_marginBottom="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginTop="100dp"
-        android:orientation="vertical" >
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-        <ImageButton
-            android:id="@+id/loader"
-            style="@style/btnStyleBeige"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:alpha="0.8"
-            android:background="@drawable/b_beige"
-            android:onClick="Loader"
-            android:src="@drawable/info"
-            android:stretchMode="none"
-            android:text="Loader" />
-
-        <ImageButton
-            android:id="@+id/prog"
-            style="@style/btnStyleBeige"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:alpha="0.8"
-            android:background="@drawable/b_beige"
-            android:onClick="Program"
-            android:src="@drawable/prog"
-            android:stretchMode="none"
-            android:text="Program" />
-
-        <ImageButton
-            android:id="@+id/env"
-            style="@style/btnStyleBeige"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:alpha="0.8"
-            android:onClick="Environment"
-            android:src="@drawable/envi"
-            android:text="Environment" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="left"
+        android:layout_weight="5"
+        android:gravity="left" >
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"   
-            android:orientation="horizontal" >
+            android:id="@+id/LinearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_gravity="left"
+            android:orientation="vertical" >
 
             <ImageButton
-                android:id="@+id/cmd"
+                android:id="@+id/sust"
                 style="@style/btnStyleBeige"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1" 
+                android:background="@drawable/shape_green"
+                android:onClick="Targets"
+                android:src="@drawable/ar"
+                android:text="AugmentedReality" />
+            
+               <ImageButton
+                   android:id="@+id/button234"
+                   style="@style/btnStyleBeige"
+                   android:layout_width="fill_parent"
+                   android:layout_height="0dp"
+                   android:layout_gravity="left"
+                   android:layout_marginBottom="5dp"
+                   android:layout_marginTop="5dp"
+                   android:layout_weight="1"
+                   android:background="@drawable/shape_orange_right"
+                   android:onClick="Robot"
+                   android:src="@drawable/com" />
+
+               <ImageButton
+                   android:id="@+id/ImageButton01"
+                   style="@style/btnStyleBeige"
+                   android:layout_width="fill_parent"
+                   android:layout_height="0dp"
+                   android:layout_marginBottom="5dp"
+                   android:layout_marginTop="5dp"
+                   android:layout_weight="1"
+                   android:background="@drawable/shape_blue"
+                   android:onClick="Graphics"
+                   android:src="@drawable/icomodify" />
+
+            <ImageButton
+                android:id="@+id/loader"
+                style="@style/btnStyleBeige"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:alpha="0.8"
-                android:background="@drawable/b_beige"
-                android:src="@drawable/com"
+                android:background="@drawable/soi_button_shape"
+                android:onClick="Loader"
+                android:src="@drawable/info"
                 android:stretchMode="none"
-                android:text="Exit" />
+                android:text="Loader"
+                android:visibility="gone" />
+
+            <ImageButton
+                android:id="@+id/prog"
+                style="@style/btnStyleBeige"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_red"
+                android:onClick="Program"
+                android:src="@drawable/hammerfile_white"
+                android:stretchMode="none"
+                android:text="Program" />
+
+            <ImageButton
+                android:id="@+id/env"
+                style="@style/btnStyleBeige"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_green"
+                android:onClick="Environment"
+                android:src="@drawable/envi"
+                android:text="Environment" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:src="@drawable/hammer_ico" />
+
+        <LinearLayout
+            android:id="@+id/LinearLayout23"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:orientation="vertical" >
 
             <ImageButton
                 android:id="@+id/state"
                 style="@style/btnStyleBeige"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_margin="5dp"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:alpha="0.8"
+                android:background="@drawable/shape_purple"
                 android:onClick="Configuration"
-                android:src="@drawable/set"
+                android:src="@drawable/set2"
                 android:text="Configuration" />
+
+            <ImageButton
+                android:id="@+id/pal"
+                style="@style/btnStyleBeige"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_purple"
+                android:onClick="Exit"
+                android:src="@drawable/off2"
+                android:text="Button" />
 
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/pal"
-            style="@style/btnStyleBeige"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:alpha="0.8"
-            android:onClick="Exit"
-            android:src="@drawable/off"
-            android:text="Button" />
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/vertSpace"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 </LinearLayout>

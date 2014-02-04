@@ -6,10 +6,8 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
-import android.graphics.Path;
 import android.graphics.Shader;
 import android.graphics.Typeface;
-import android.widget.TextView;
 
 import com.test.AuxBasicVariables.StringValue;
 
@@ -32,6 +30,15 @@ public class ButtonOperator extends ButtonLinkAddable {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	public ButtonOperator(PositionableObject obj) {
+		super(obj);
+		ButtonOperator op=(ButtonOperator)obj;
+		valueX=op.valueX;
+		valueY=op.valueY;
+	}
+
+
 	public ButtonOperator(int width,int height) {
 		super(width,height);
 		
@@ -57,7 +64,7 @@ public class ButtonOperator extends ButtonLinkAddable {
 	{	
 		
 	
-		path=new Path();
+		path.reset();
 		paint.setStyle(Style.FILL);
 		paint.setShader(new LinearGradient(0, 0, getWidth(),0,colorD,colorL,  Shader.TileMode.MIRROR));
 		 
@@ -118,7 +125,7 @@ public class ButtonOperator extends ButtonLinkAddable {
 	
 		double vX=0;
 		double vY=0;
-		variables=((ActivityScratch)getActivity()).getVarGrid();
+		variables=((ActivityScratching)getActivity()).getVariables().getVarGrid();
 	
 		if(type!=ObjectExecutable.ADD_ONE && type!= ObjectExecutable.SUSTRACT_ONE)
 		{
@@ -200,27 +207,41 @@ public class ButtonOperator extends ButtonLinkAddable {
 		}
 		else if(type>CONSTANT)
 		{
+			
+			((ActivityScratching) activity).showButtonLayout(new FragmentComparerConst(((ActivityScratching)activity).getVariables().getVarGrid(),this),this);
+			
+		/*	
 			touchLay=(MyTouchableLayout)activity.findViewById(R.id.compLayConst);
 			touchLay.setStringValue2(valueY);
 			((TextView)touchLay.findViewById(R.id.oper)).setText(name);
 	         
-		}
+	*/	}
 		else
 		{
+			
+			((ActivityScratching) activity).showButtonLayout(new FragmentComparer(((ActivityScratching)activity).getVariables().getVarGrid(),this),this);
+	/*		
 			touchLay=(MyTouchableLayout)activity.findViewById(R.id.compLay);
 			touchLay.setStringValue2(valueY);
 			((TextView)touchLay.findViewById(R.id.oper)).setText(name);
-		}
+	*/	}
 		
-		touchLay.setIntercept(false);
-		touchLay.setStringValue(valueX);
-		((ActivityScratch)getActivity()).showButtonParameters(touchLay);
+	//	touchLay.setIntercept(false);
+	//	touchLay.setStringValue(valueX);
+	//	((ActivityScratch)getActivity()).showButtonParameters(touchLay);
 		modificate=true;
 	}
 	
 	public void setVariablesGrid(MyVariableGrid grid)
 	{
 		variables=grid;
+	}
+
+
+	@Override
+	public PositionableObject copyFields(PositionableObject obj) {
+		// TODO Auto-generated method stub
+		return new ButtonOperator(obj);
 	}
 	
 }

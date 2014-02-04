@@ -30,6 +30,7 @@ public class Client extends Thread {
 	Socket myClient=null;
 	InputStream inMessage;
 	OutputStream outMessage;
+
 	
 	
 	

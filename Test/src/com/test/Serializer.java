@@ -237,8 +237,8 @@ public class Serializer {
 	public static void readComparerFields(ObjectInputStream in,ButtonComparer obj) throws OptionalDataException, ClassNotFoundException, IOException {
 		
 		readPositionableFields(in,obj);
-		obj.setvA(AuxBasicVariables.createString((String)in.readObject()));
-	    obj.setvB(AuxBasicVariables.createString((String)in.readObject()));
+		obj.setvA((String)in.readObject());
+	    obj.setvB((String)in.readObject());
 		
 	}
 	public static void writeBitmap(Bitmap bitmap, ObjectOutputStream out) throws IOException
@@ -308,7 +308,7 @@ public class Serializer {
 	     out.writeInt(obj.getHeight());
 	     out.writeInt(obj.getType());     
 	     out.writeObject(obj.getName()); 
-	     out.writeDouble(obj.getParameter().getValue());
+	     out.writeDouble(obj.getParameter());
 	     
 	    
 	}
@@ -322,7 +322,7 @@ public class Serializer {
 	    obj.height = in.readInt();
 	    obj.type =in.readInt();	
 	    obj.name  =(String)in.readObject();    
-	    obj.parameter=AuxBasicVariables.createDoubleValue(in.readDouble());
+	    obj.parameter=in.readDouble();
 	   
 	    
 		 

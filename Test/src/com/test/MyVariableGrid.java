@@ -112,7 +112,7 @@ public class MyVariableGrid extends GridView implements OnItemClickListener,OnIt
 
 	@Override
 	public boolean onItemLongClick( AdapterView<?> adapter, View view, int pos,long arg3) {
-		
+		/*
 		final AdapterView<?> adapt=adapter;
 		final int position=pos;
 		MyCustomDialog.Builder builder = new MyCustomDialog.Builder(context);
@@ -141,13 +141,13 @@ public class MyVariableGrid extends GridView implements OnItemClickListener,OnIt
 	
 		Dialog dialog = builder.create();
 		dialog.show();
-       // TODO Auto-generated method stub// TODO Auto-generated method stub
-		return false;
+       // TODO Auto-generated method stub// TODO Auto-generated method stub*/
+		return true;
 	}
 
 @Override
 public void onItemClick(AdapterView<?> adapter, View view, int position, long arg3) {
-	
+	/*
 	final EditText newValue=new EditText(context);
 	newValue.setRawInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_FLAG_SIGNED|InputType.TYPE_NUMBER_FLAG_DECIMAL);
 	final AuxAdapterVariables adapt=(AuxAdapterVariables)((MyVariableGrid)adapter).getAdapter();
@@ -180,7 +180,7 @@ public void onItemClick(AdapterView<?> adapter, View view, int position, long ar
 
 	Dialog dialog = builder.create();
 	dialog.show();
-	
+	*/
 	
 }
 

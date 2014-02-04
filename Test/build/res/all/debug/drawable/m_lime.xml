@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+
+ <item>
+        <shape>
+            <gradient 
+                android:angle="0"
+                android:startColor="#8CBF26"
+                android:endColor="#8FD429"
+                android:type="linear"
+         	/>
+        </shape>     
+    </item>
+
+</selector>
+<!-- From: file:/C:/Users/Carlos/Dropbox/Hammer/Test/res/drawable/m_lime.xml -->
